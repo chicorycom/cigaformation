@@ -204,7 +204,7 @@
                             <span class="input-group-btn">
                                     <button class="btn btn-default" type="button"><i class="ti-search"></i></button>
                                 </span>
-                        </div><!-- /input-group -->
+                        </div>
                         <div class="br"></div>
                     </aside>
                     <aside class="single_sidebar_widget author_widget">
