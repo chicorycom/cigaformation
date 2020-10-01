@@ -24,6 +24,9 @@ class HomeController extends ChicorycomBaseController
      */
     public function index($view='/')
     {
+            if($view == "/"){
+                $view = 'home';
+            }
             $default = view()->exists("chicorycom::pages.{$view}") ? $view : 'default';
             return $this->view($default, compact('view'));
     }
