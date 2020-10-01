@@ -43,5 +43,6 @@
                 "Cigaformation": "Chicorycom\\Cigaformation\\Facades\\Cigaformation"
             }
         }
-    }
+    },
+    "minimum-stability": "dev"
 }
