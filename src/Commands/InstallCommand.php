@@ -73,6 +73,7 @@ class InstallCommand extends Command
      * @param \Illuminate\Filesystem\Filesystem $filesystem
      *
      * @return void
+     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
     public function handle(Filesystem $filesystem)
     {
@@ -84,7 +85,7 @@ class InstallCommand extends Command
         $this->call('vendor:publish', ['--provider' => CigaformationServiceProvider::class]);
 
         $this->info('Migrating the database tables into your application');
-        $this->call('migrate', ['--force' => $this->option('force')]);
+        //$this->call('migrate', ['--force' => $this->option('force')]);
 
         $this->info('Attempting to set Voyager User model as parent to App\User');
         if (file_exists(app_path('User.php')) || file_exists(app_path('Models/User.php'))) {

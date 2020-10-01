@@ -129,9 +129,9 @@ class CigaformationServiceProvider extends ServiceProvider
                 "{$publishablePath}/public" => public_path(''),
             ],
 
-            'seeders' => [
+            /*'seeders' => [
                 "{$publishablePath}/database/seeders" => database_path('seeds'),
-            ],
+            ],*/
             'config' => [
                 "{$publishablePath}/config/cigaformation.php" => config_path('cigaformation.php'),
             ],
