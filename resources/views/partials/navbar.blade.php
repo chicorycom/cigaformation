@@ -13,17 +13,13 @@
                 </div>
             </div>
         </div>
-
         <nav class="navbar navbar-expand-lg navbar-light">
             <div class="container">
-                <!-- Brand and toggle get grouped for better mobile display -->
                 <a class="navbar-brand logo_h" href="#" ><img src="/images/logo.png" alt=""/></a>
-
                 <button class="navbar-toggler" type="button" id="navbar-toggler">
                     <span class="icon-bar"></span> <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <!-- Collect the nav links, forms, and other content for toggling -->
                 <div
                     class="collapse navbar-collapse offset"
                     id="navbarSupportedContent"
@@ -33,7 +29,25 @@
                             <a class="nav-link" href="{{ route('page', 'home') }}" >Acceil</a>
                         </li>
                         <li class="nav-item @if(Request::path() == 'about') active @endif">
-                            <a class="nav-link " href="{{ route('page', 'about') }}" >Notre ecole</a>
+                            <a class="nav-link " href="{{ route('page', 'about') }}" >A propos</a>
+                        </li>
+                        <li class="nav-item submenu dropdown">
+                            <a  class="nav-link dropdown-toggle"
+                                href="#{{ route('page', 'contact') }}"
+                                data-toggle="dropdown"
+                                role="button"
+                                aria-haspopup="true"
+                                aria-expanded="false"
+                                onclick="(e)=>{e.stopPropagation()}"
+                            >Campus</a>
+                            <ul class="dropdown-menu">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('page', 'contact') }}">Campus Guediaway</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('page', 'contact') }}" >Campus Malika</a>
+                                </li>
+                            </ul>
                         </li>
                         <li class="nav-item submenu dropdown">
                             <a
@@ -56,7 +70,6 @@
                                 </li>
                             </ul>
                         </li>
-
                         <li class="nav-item submenu dropdown">
                             <a
                                 href="#"
@@ -79,18 +92,14 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('page', 'opportunites') }}">Opportunites</a>
                         </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a class="nav-link" href="{{ route('page', 'contact') }}">Campus</a>
-                        </li>
-
+                        </li>-->
                     </ul>
                 </div>
-                <!-- nav -->
-                <!-- Right menu element-->
 
             </div>
         </nav>
-
     </div>
 </header>
 <div id="sidebar-mobile">
@@ -99,8 +108,26 @@
         <li class="nav-item @if(Request::path() == '/' or request()->path() == 'home') active @endif">
             <a class="nav-link" href="{{ route('page', 'home') }}" >Acceil</a>
         </li>
+        <li class="nav-item submenu dropdown">
+            <a  class="nav-link dropdown-toggle"
+                href="#{{ route('page', 'contact') }}"
+                data-toggle="dropdown"
+                role="button"
+                aria-haspopup="true"
+                aria-expanded="false"
+                onclick="(e)=>{e.stopPropagation()}"
+           >Campus</a>
+            <ul class="dropdown-menu">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('page', 'campus-guediaway') }}">Campus Guediaway</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('page', 'campus-malika') }}" >Campus Malika</a>
+                </li>
+            </ul>
+        </li>
         <li class="nav-item @if(Request::path() == 'about') active @endif">
-            <a class="nav-link " href="{{ route('page', 'about') }}" >Notre ecole</a>
+            <a class="nav-link " href="{{ route('page', 'about') }}" >A propos</a>
         </li>
         <li class="nav-item submenu dropdown">
             <a
@@ -124,7 +151,6 @@
                 </li>
             </ul>
         </li>
-
         <li class="nav-item submenu dropdown">
             <a
                 href="#"
@@ -147,9 +173,5 @@
         <li class="nav-item">
             <a class="nav-link" href="{{ route('page', 'opportunites') }}">Opportunites</a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('page', 'contact') }}">Campus</a>
-        </li>
-
     </ul>
 </div>

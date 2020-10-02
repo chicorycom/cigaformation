@@ -23,18 +23,18 @@
                 <div class="contact_info">
                     <div class="info_item">
                         <i class="ti-home"></i>
-                        <h6>California, United States</h6>
-                        <p>Santa monica bullevard</p>
+                        <h6>Guédiawaye en face stade Amadou Barry</h6>
+                        <p>près villa Malick Gackou</p>
                     </div>
                     <div class="info_item">
                         <i class="ti-headphone"></i>
-                        <h6><a href="#">00 (440) 9865 562</a></h6>
-                        <p>Mon to Fri 9am to 6 pm</p>
+                        <h6><a href="#">338778361 / 776677470</a></h6>
+                        <p>Du lundi au samedi de 8h à 20h</p>
                     </div>
                     <div class="info_item">
                         <i class="ti-email"></i>
-                        <h6><a href="#">support@colorlib.com</a></h6>
-                        <p>Send us your query anytime!</p>
+                        <h6><a href="#">contact@ciga-formation.com</a></h6>
+                        <p>Envoyez-nous votre demande à tout moment!</p>
                     </div>
                 </div>
             </div>
@@ -53,9 +53,9 @@
                                 class="form-control"
                                 id="name"
                                 name="name"
-                                placeholder="Enter your name"
+                                placeholder="Entrez votre nom"
                                 onfocus="this.placeholder = ''"
-                                onblur="this.placeholder = 'Enter your name'"
+                                onblur="this.placeholder = 'Entrez votre nom'"
                                 required=""
                             />
                         </div>
@@ -65,9 +65,9 @@
                                 class="form-control"
                                 id="email"
                                 name="email"
-                                placeholder="Enter email address"
+                                placeholder="Entrer l'adresse e-mail"
                                 onfocus="this.placeholder = ''"
-                                onblur="this.placeholder = 'Enter email address'"
+                                onblur="this.placeholder = 'Entrer l\'adresse e-mail'"
                                 required=""
                             />
                         </div>
@@ -77,9 +77,9 @@
                                 class="form-control"
                                 id="subject"
                                 name="subject"
-                                placeholder="Enter Subject"
+                                placeholder="Entrez le sujet"
                                 onfocus="this.placeholder = ''"
-                                onblur="this.placeholder = 'Enter Subject'"
+                                onblur="this.placeholder = 'Entrez le sujet'"
                                 required=""
                             />
                         </div>
@@ -91,16 +91,16 @@
                       name="message"
                       id="message"
                       rows="1"
-                      placeholder="Enter Message"
+                      placeholder="Entrez le message"
                       onfocus="this.placeholder = ''"
-                      onblur="this.placeholder = 'Enter Message'"
+                      onblur="this.placeholder = 'Entrez le message'"
                       required=""
                   ></textarea>
                         </div>
                     </div>
                     <div class="col-md-12 text-right">
                         <button type="submit" value="submit" class="btn primary-btn">
-                            Send Message
+                            Envoyer le message
                         </button>
                     </div>
                 </form>
