@@ -296,10 +296,10 @@
     <!--================ End Registration Area =================-->
 
 
-    @include('chicorycom::partials.trainer_area')
+    @include('chicorycom::components.trainer_area')
 
 
-   @include('chicorycom::partials.event')
+   @include('chicorycom::components.event')
 
 @endsection
 @push('scripts')

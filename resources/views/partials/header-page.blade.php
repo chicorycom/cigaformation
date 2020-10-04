@@ -6,10 +6,10 @@
             <div class="row justify-content-center">
                 <div class="col-lg-6">
                     <div class="banner_content text-center">
-                        <h2>{{ __("chicorycom::home.{$view}")  }}</h2>
-                        <div class="page_link">
-                            <a href="/">{{ __("chicorycom::home.home")  }}</a>
-                            <a href="{{ route('page', $view) }}">{{ __("chicorycom::home.{$view}")  }}</a>
+                        <h2 class="wow fadeInDown" data-wow-delay=".25s">{{ __("chicorycom::home.{$view}")  }}</h2>
+                        <div class="page_link wow fadeInLeft" data-wow-delay=".35s">
+                            <a  href="/" >{{ __("chicorycom::home.home")  }}</a>
+                            <a  href="{{ route('page', $view) }}" >{{ __("chicorycom::home.{$view}")  }}</a>
                         </div>
                     </div>
                 </div>

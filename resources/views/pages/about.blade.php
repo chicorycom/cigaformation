@@ -19,14 +19,12 @@
                     <div class="h_blog_text_inner left right">
                         <h4>Bienvenue dans Ciga Formation</h4>
                         <p>
-                            Subdue whales void god which living don't midst lesser
-                            yielding over lights whose. Cattle greater brought sixth fly
-                            den dry good tree isn't seed stars were.
+                            Devenez expert·e sur un métier passionnant et décrochez un emploi. Garanti. Avec les parcours diplômants de CIGA-FORMATION, vous accédez aux métiers les plus recherchés sur le marché du travail. Votre succès, c'est bien plus qu'un diplôme, c'est un emploi fait pour vous. Cette réussite professionnelle, nous vous la garantissons tout simplement.
+
                         </p>
                         <p>
-                            Subdue whales void god which living don't midst lesser yieldi
-                            over lights whose. Cattle greater brought sixth fly den dry
-                            good tree isn't seed stars were the boring.
+                            Nous vous proposons des cours ouverts pour vous former autrement, pour devenir acteur de votre vie. Nous vous aidons à prendre votre envol, mais ça ne s'arrête pas là. Notre volonté est de vous accompagner tout au long de...
+
                         </p>
                         <a class="primary-btn" href="#">
                             Apprendre encore plus <i class="ti-arrow-right ml-1"></i>
@@ -46,7 +44,7 @@
             <div class="col-lg-5">
                 <div class="main_title">
                     <h2 class="mb-3 text-white">Fonctionnalité géniale</h2>
-                    <p>
+                    <p style="color: white">
                         Replenish man have thing gathering lights yielding shall you
                     </p>
                 </div>

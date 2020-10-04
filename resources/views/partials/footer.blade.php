@@ -1,4 +1,4 @@
-@include('chicorycom::partials.partenaires')
+@include('chicorycom::components.partenaires')
 <footer class="footer-area section_gap_top">
     <div class="container">
         <div class="row">

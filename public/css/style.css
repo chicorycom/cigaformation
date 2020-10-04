@@ -12929,6 +12929,12 @@ button:focus {
   display: none;
 }
 
+@media (max-width: 767px) {
+  .carousel {
+    margin-top: 40px;
+  }
+}
+
 /* End Home Banner Area css
 ============================================================================================ */
 
@@ -17037,6 +17043,16 @@ h6 {
 
 .footer-area .footer-bottom a {
   color: #fff8f9;
+}
+
+@media (max-width: 991px) {
+  .footer-area .single-footer-widget {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 /*---------------------------------------------------- */
