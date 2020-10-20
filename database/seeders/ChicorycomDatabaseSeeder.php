@@ -2,10 +2,6 @@
 
 namespace Database\Seeders;
 
-
-use Chicorycom\Cigaformation\Database\Seeders\MenuItemTable;
-use Chicorycom\Cigaformation\Database\Seeders\RoleTableSeeder;
-use Chicorycom\Cigaformation\Database\Seeders\UsersTable;
 use Illuminate\Database\Seeder;
 
 class ChicorycomDatabaseSeeder extends Seeder
