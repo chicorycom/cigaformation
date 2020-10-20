@@ -1,4 +1,4 @@
-window.token = document.head.querySelector('meta[name="csrf-token"][content]').content;
+window.token = document.head.querySelector('meta[name="csrf-token"][content]');
 export default class FetchApi{
 
     /**
@@ -11,6 +11,10 @@ export default class FetchApi{
         return FetchApi.fetchApi(url, 'POST', formData);
     }
 
+    static get(url) {
+        return FetchApi.fetchApi(url, 'GET', {});
+    }
+
 
     /**
      *
@@ -20,7 +24,6 @@ export default class FetchApi{
      * @returns {Promise<any>}
      */
     static fetchApi(url, method, data) {
-        console.log(token)
         return new Promise((resolve, reject)=> {
             fetch(url,{
                 method: method,
@@ -31,7 +34,6 @@ export default class FetchApi{
                 if (!response.ok) { throw response }
                 return response.json().then(res => resolve(res))
             }).catch(err=>{
-
                 if (typeof err.text === 'function') {
                     const status = err.status;
                     err.json().then(errorMessage => {
@@ -52,9 +54,9 @@ export default class FetchApi{
     static header(){
         return new Headers({
             //"Content-Type": "application/json",
-            "Accept": "application/json",
-            //"X-Requested-With": "XMLHttpRequest",
-            //"X-CSRF-Token": token
+            "Accept": "application/json, text-plain, */*",
+            "X-Requested-With": "XMLHttpRequest",
+           // "X-CSRF-Token": token ? token.content : ''
         });
     }
 }

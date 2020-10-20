@@ -29,7 +29,7 @@
     import TopNavbar from './TopNavbar.vue'
     import SideBar from './SideBar.vue'
     export default {
-        name: "DashboardLayout",
+        middleware: 'auth',
         components: {
             TopNavbar,
             SideBar

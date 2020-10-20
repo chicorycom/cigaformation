@@ -10,21 +10,23 @@ namespace Chicorycom\Cigaformation\Commands;
 
 
 
+
 use Chicorycom\Cigaformation\CigaformationServiceProvider;
+use Database\Seeders\ChicorycomDatabaseSeeder;
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Process\Process;
-use Chicorycom\Cigaformation\Traits\Seedable;
+//use Chicorycom\Cigaformation\Traits\Seedable;
 
 
 class InstallCommand extends Command
 {
 
-    use Seedable;
 
 
-    protected $seedersPath = __DIR__.'/../../database/seeds/';
+
+    //protected $seedersPath = __DIR__.'/../../database/seeders/';
 
     /**
      * The console command name.
@@ -83,11 +85,32 @@ class InstallCommand extends Command
         $tags = ['assets'];
 
         $this->call('vendor:publish', ['--provider' => CigaformationServiceProvider::class]);
+        $this->call('vendor:publish', ['--provider' => "Tymon\JWTAuth\Providers\LaravelServiceProvider"]);
+        $this->call('jwt:secret');
+
+        $this->info('Attempting to set Chicorycom Auth driver');
+        if (file_exists(config_path('auth.php'))) {
+            $userPath =  config_path('auth.php');
+
+            $str = file_get_contents($userPath);
+
+            if ($str !== false) {
+                $str = str_replace("'guard' => 'web'", "'guard' => 'api'", $str);
+                file_put_contents($userPath, $str);
+
+                $str = str_replace("'driver' => 'token'", "'driver' => 'jwt'", $str);
+                file_put_contents($userPath, $str);
+            }
+        } else {
+            $this->warn('Unable to locate "auth.php" in app .  Did you move this file?');
+            $this->warn('You will need to update this manually.  Change "driver => token" to "driver => jwt " in your auth config');
+        }
 
         $this->info('Migrating the database tables into your application');
-        //$this->call('migrate', ['--force' => $this->option('force')]);
+        $this->call('migrate:refresh', ['--force' => $this->option('force')]);
 
-        $this->info('Attempting to set Voyager User model as parent to App\User');
+
+        $this->info('Attempting to set Chicorycom User model as parent to App\User');
         if (file_exists(app_path('User.php')) || file_exists(app_path('Models/User.php'))) {
             $userPath = file_exists(app_path('User.php')) ? app_path('User.php') : app_path('Models/User.php');
 
@@ -100,7 +123,7 @@ class InstallCommand extends Command
             }
         } else {
             $this->warn('Unable to locate "User.php" in app or app/Models.  Did you move this file?');
-            $this->warn('You will need to update this manually.  Change "extends Authenticatable" to "extends \TCG\Voyager\Models\User" in your User model');
+            $this->warn('You will need to update this manually.  Change "extends Authenticatable" to "extends \Chicorycom\Cigaformation\Models\User" in your User model');
         }
 
         $this->info('Dumping the autoloaded files and reloading all new files');
@@ -119,7 +142,9 @@ class InstallCommand extends Command
         }
 
 
-
+        $this->info('Seeding data into the database');
+        //$this->seed(ChicorycomDatabaseSeeder::class);
+        $this->call('db:seed', ['--class' => ChicorycomDatabaseSeeder::class]);
 
         //$this->info('Seeding data into the database');
        // $this->seed('VoyagerDatabaseSeeder');

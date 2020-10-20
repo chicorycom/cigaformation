@@ -7,6 +7,15 @@ html {
 
 body {
   height: 100%;
+    margin: 0;
+    font-family: "Roboto", sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #1b1e24;
+    text-align: left;
+    /*background-color: #fafbff;*/
+
 }
 
 a {
@@ -84,6 +93,14 @@ a {
     animation: spin 1s linear infinite;
   }
 }
+.close{
+    position: absolute;
+    right: 2px;
+    top: 2px;
+    cursor: pointer;
+    z-index: 100;
+}
+
 
 
 @keyframes spin {

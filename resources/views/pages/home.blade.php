@@ -13,21 +13,21 @@
                             <div class="carousel-item active">
                                 <div class="single_event position-relative">
                                     <div class="event_thumb">
-                                        <img src="img/event/directeur.jpeg" alt="" style="width: 555px; height: 400px;" />
+                                        <img src="/img/event/directeur.jpeg" alt="" style="width: 555px; height: 400px;" />
                                     </div>
                                     <div class="event_details">
                                         <p>
                                             One make creepeth man for so bearing their firmament won't
                                             fowl meat over seas great
                                         </p>
-                                        <a href="{{ route('details', ['view'=> 'event', 'slug' => 'slug-slug']) }}" class="primary-btn rounded-0 mt-3">Mot du Directeur</a>
+                                        <a href="#" class="primary-btn rounded-0 mt-3">Mot du Directeur</a>
                                     </div>
                                 </div>
                             </div>
                             <div class="carousel-item">
                                 <div class="single_event position-relative">
                                     <div class="event_thumb">
-                                        <img src="img/event/actu1.png" alt="" style="width: 555px; height: 400px;"/>
+                                        <img src="/img/event/actu1.png" alt="" style="width: 555px; height: 400px;"/>
                                     </div>
                                     <div class="event_details">
                                         <div class="d-flex mb-4" >
@@ -46,7 +46,7 @@
                                             One make creepeth man for so bearing their firmament won't
                                             fowl meat over seas great
                                         </p>
-                                        <a href="{{ route('details', ['view'=> 'event', 'slug' => 'slug-slug']) }}" class="primary-btn rounded-0 mt-3">
+                                        <a href="#" class="primary-btn rounded-0 mt-3">
                                             Voir les détails
                                         </a>
                                     </div>
@@ -77,107 +77,8 @@
 
     <!--================ End Feature Area =================-->
 
-    <!--================ Start Popular Courses Area =================-->
-    <div class="popular_courses ">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-5">
-                    <div class="main_title">
-                        <h2 class="mb-3">Nos cours populaires</h2>
-                        <p>
-                            Une formation de qualité au service des jeunes et des professionnels
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <!-- single course -->
-                <div class="col-lg-12">
-                    <div class="owl-carousel active_course">
-                        <div class="single_course">
-                            <div class="course_head">
-                                <img class="img-fluid" src="img/courses/c1.jpeg" alt="" />
-                            </div>
-                            <div class="course_content">
-                                <a href="{{ route('details', ['view'=> 'course-details', 'slug'=> 'slug-slug']) }}" class="tag mb-4 d-inline-block">Voir les détails</a>
-                                <h4 class="mb-3">
-                                    <a href="{{ route('details', ['view'=> 'course-details', 'slug'=> 'slug-slug']) }}">Custom Product Design</a>
-                                </h4>
-                                <p>
-                                    One make creepeth man bearing their one firmament won't fowl
-                                    meat over sea
-                                </p>
-                                <div class="course_meta d-flex justify-content-lg-between align-items-lg-center flex-lg-row flex-column mt-4">
-                                    <ul class="_meta">
-                                        <li class="d-inline-block mr-2">
-                                            <i class="ti-calendar"></i> Duration: 3 ans
-                                        </li>
-                                        <li class="d-inline-block mr-2">
-                                            <i class="ti-bar-chart"></i> Degree level: BAC +3
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+    <x-chicorycom-top-courses />
 
-                        <div class="single_course">
-                            <div class="course_head">
-                                <img class="img-fluid" src="/img/courses/c2.jpeg" alt="" />
-                            </div>
-                            <div class="course_content">
-                                <a href="{{ route('details', ['view'=> 'course-details', 'slug'=> 'slug-slug']) }}" class="tag mb-4 d-inline-block">Voir les détails</a>
-                                <h4 class="mb-3">
-                                    <a href="{{ route('details', ['view'=> 'course-details', 'slug'=> 'slug-slug']) }}">Social Media Network</a>
-                                </h4>
-                                <p>
-                                    One make creepeth man bearing their one firmament won't fowl
-                                    meat over sea
-                                </p>
-                                <div class="course_meta d-flex justify-content-lg-between align-items-lg-center flex-lg-row flex-column mt-4">
-                                    <ul class="_meta">
-                                        <li class="d-inline-block mr-2">
-                                            <i class="ti-calendar"></i> Duration: 3 ans
-                                        </li>
-                                        <li class="d-inline-block mr-2">
-                                            <i class="ti-bar-chart"></i> Degree level: BAC +3
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="single_course">
-                            <div class="course_head">
-                                <img class="img-fluid" src="img/courses/c3.jpeg" alt="" />
-                            </div>
-                            <div class="course_content">
-                                <!-- <span class="price">25 000</span> -->
-                                <a href="{{ route('details', ['view'=> 'course-details', 'slug'=> 'slug-slug']) }}" class="tag mb-4 d-inline-block">Voir les détails</a>
-                                <h4 class="mb-3">
-                                    <a href="course-details.html">Computer Engineering</a>
-                                </h4>
-                                <p>
-                                    One make creepeth man bearing their one firmament won't fowl
-                                    meat over sea
-                                </p>
-                                <div class="course_meta d-flex justify-content-lg-between align-items-lg-center flex-lg-row flex-column mt-4">
-                                    <ul class="_meta">
-                                        <li class="d-inline-block mr-2">
-                                            <i class="ti-calendar"></i> Duration: 3 ans
-                                        </li>
-                                        <li class="d-inline-block mr-2">
-                                            <i class="ti-bar-chart"></i> Degree level: BAC +3
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--================ End Popular Courses Area =================-->
 
     <!--================ Start Registration Area =================-->
     <div class=" registration_area" id="pre-registration" style="background-image: url('/img/banner/4.jpeg');">
@@ -295,8 +196,8 @@
     </div>
     <!--================ End Registration Area =================-->
 
+    <x-chicorycom-modulaire-formation />
 
-    @include('chicorycom::components.trainer_area')
 
 
    @include('chicorycom::components.event')

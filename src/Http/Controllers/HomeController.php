@@ -2,6 +2,8 @@
 
 namespace Chicorycom\Cigaformation\Http\Controllers;
 
+use Chicorycom\Cigaformation\Models\Formation;
+use Chicorycom\Cigaformation\Models\Menu;
 use Illuminate\Http\Request;
 
 class HomeController extends ChicorycomBaseController
@@ -24,17 +26,24 @@ class HomeController extends ChicorycomBaseController
      */
     public function index($view='/')
     {
+            $data = null;
             if($view == "/"){
                 $view = 'home';
             }
             $default = view()->exists("chicorycom::pages.{$view}") ? $view : 'default';
-            return $this->view($default, compact('view'));
+            $v = Menu::where('slug', $view)->first();
+            $view = $v ? $v : $view;
+
+            $route = route('page', isset($view->name) ? $view->slug : $view ) ;
+            return $this->view($default, compact('view', 'route'));
     }
 
 
-    public function detail(Request $request, $view, $slug){
+    public function detail($view, $slug){
 
         $default = view()->exists("chicorycom::pages.{$view}") ? $view : 'default';
-        return $this->view($default, compact('view', 'slug'));
+        $data = Formation::where('slug', $slug)->firstOrfail();
+        $route = route('page',  $view . '/'. $slug) ;
+        return $this->view($default, compact('view', 'route', 'data'));
     }
 }

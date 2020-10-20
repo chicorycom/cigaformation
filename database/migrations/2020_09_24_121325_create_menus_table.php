@@ -18,7 +18,7 @@ class CreateMenusTable extends Migration
             $table->enum('type', ['PUBLIC', 'ADMIN'])->default('PUBLIC');
             $table->integer('parent_id')->nullable();
             $table->string('name');
-            $table->string('slug');
+            $table->string('slug')->unique();
             $table->string('icon')->nullable();
             $table->string('target')->default('_self');
             $table->integer('order')->nullable();

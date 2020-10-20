@@ -1,9 +1,14 @@
-window.Vue = require('vue');
+import Vue from 'vue'
+import store from '~/store'
+import router from '~/router';
 import { Laue } from 'laue';
-import App from './App.vue';
-import router from './router';
+import App from './components/App'
+import i18n from "./plugins/i18n";
+
 //import io from 'socket.io-client';
 
+import '~/plugins'
+import '~/components'
 
 Vue.use(Laue);
 
@@ -17,8 +22,10 @@ createContaine();
 
 //Vue.prototype.$datas = JSON.parse(document.body.dataset.page);
 new Vue({
+    i18n,
+    store,
     router,
-    render: h => h(App)
+    ...App
 }).$mount('#chicorycomContainer');
 
 

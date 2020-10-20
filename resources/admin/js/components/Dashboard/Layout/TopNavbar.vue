@@ -13,8 +13,8 @@
       <!-- Nav Item - User Information -->
       <li class="nav-item dropdown no-arrow">
         <div class="nav-link dropdown-toggle cursor-pointer"  :class="{'show': isShow }" @click.prevent="isShow = !isShow">
-          <span class="mr-2 d-none d-lg-inline text-gray-600 small">user.fullname</span>
-            <avatar class="img-profile rounded-circle" :size="30" username="user fullname"></avatar>
+          <span class="mr-2 d-none d-lg-inline text-gray-600 small" v-text="user.name ? user.name : ''"></span>
+            <avatar class="img-profile rounded-circle" :size="30" :username="user.name ?  user.name : 'user name'"></avatar>
         </div>
         <!-- Dropdown - User Information -->
         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" :class="{'show': isShow }" aria-labelledby="userDropdown">
@@ -31,7 +31,7 @@
             Activity Log
           </a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="/logout" >
+          <a class="dropdown-item"  @click="logoutModal">
             <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
             Logout
           </a>
@@ -44,26 +44,33 @@
 </template>
 <script>
 import Avatar from 'vue-avatar'
+import FetchApi from "../../../helpers/fetch_api";
+import { mapGetters } from 'vuex'
 export default {
     name: 'nav-bar',
     data: () => {
       return {
-          isShow: false
+          isShow: false,
       }
     },
     components: {
         Avatar
     },
-    mounted(){
-
-    },
+    computed: mapGetters({
+        user: 'auth/user'
+    }),
     methods: {
         sidebarToggleTop(){
             document.body.classList.toggle('sidebar-toggled');
             document.getElementById('accordionSidebar').classList.toggle('toggled');
         },
         logoutModal(){
-
+            FetchApi.postForm('logout')
+                .then(response => {
+                    if('redirect' in response){
+                        window.location.href = response.redirect
+                    }
+                })
         }
     }
 }

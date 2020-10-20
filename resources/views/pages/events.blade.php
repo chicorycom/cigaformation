@@ -5,9 +5,10 @@
     @include('chicorycom::partials.header-page')
 @stop
 
-<!--================Blog Area =================
+<!--================Blog Area ================= -->
 <section class="blog_area section_gap">
     <div class="container">
+        <!--
         <div class="row">
             <div class="col-lg-8">
                 <div class="blog_left_sidebar">
@@ -353,6 +354,7 @@
                 </div>
             </div>
         </div>
+        -->
     </div>
 </section>
 <!--================Blog Area =================-->

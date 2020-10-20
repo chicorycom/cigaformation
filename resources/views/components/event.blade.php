@@ -15,7 +15,7 @@
             <div class="col-lg-6 col-md-6">
                 <div class="single_event position-relative">
                     <div class="event_thumb">
-                        <img src="img/event/actu1.png" alt="" style="width: 555px; height: 400px"/>
+                        <img src="/img/event/actu1.png" alt="" style="width: 555px; height: 400px"/>
                     </div>
                     <div class="event_details">
                         <div class="d-flex mb-4" >
@@ -34,7 +34,7 @@
                             One make creepeth man for so bearing their firmament won't
                             fowl meat over seas great
                         </p>
-                        <a href="{{ route('details', ['view'=> 'event', 'slug' => 'slug-slug']) }}" class="primary-btn rounded-0 mt-3">Voir les détails</a>
+                        <a href="#" class="primary-btn rounded-0 mt-3">Voir les détails</a>
                     </div>
                 </div>
             </div>
@@ -60,7 +60,7 @@
                             One make creepeth man for so bearing their firmament won't
                             fowl meat over seas great
                         </p>
-                        <a href="{{ route('details', ['view'=> 'event', 'slug' => 'slug-slug']) }}" class="primary-btn rounded-0 mt-3">Voir les détails</a>
+                        <a href="#" class="primary-btn rounded-0 mt-3">Voir les détails</a>
                     </div>
                 </div>
             </div>

@@ -25,76 +25,31 @@
                     id="navbarSupportedContent"
                 >
                     <ul class="nav navbar-nav menu_nav ml-auto">
-                        <li class="nav-item @if(Request::path() == '/' or request()->path() == 'home') active @endif">
-                            <a class="nav-link" href="{{ route('page', 'home') }}" >Acceil</a>
-                        </li>
-                        <li class="nav-item @if(Request::path() == 'about') active @endif">
-                            <a class="nav-link " href="{{ route('page', 'about') }}" >A propos</a>
-                        </li>
-                        <li class="nav-item submenu dropdown">
-                            <a  class="nav-link dropdown-toggle"
-                                href="#{{ route('page', 'contact') }}"
-                                data-toggle="dropdown"
-                                role="button"
-                                aria-haspopup="true"
-                                aria-expanded="false"
-                                onclick="(e)=>{e.stopPropagation()}"
-                            >Campus</a>
-                            <ul class="dropdown-menu">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('page', 'contact') }}">Campus Guediaway</a>
+                        @foreach($menus as $menu)
+                            @if(count($menu->children) == 0)
+                                <li class="nav-item @if(request()->path() == $menu->slug) active @endif">
+                                    <a class="nav-link" href="{{ route('page', $menu->slug) }}" >{{ $menu->name }}</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('page', 'contact') }}" >Campus Malika</a>
+                                @else
+                                <li class="nav-item submenu dropdown">
+                                    <a  class="nav-link dropdown-toggle"
+                                        href="#"
+                                        data-toggle="dropdown"
+                                        role="button"
+                                        aria-haspopup="true"
+                                        aria-expanded="false"
+                                    >{{ $menu->name }}</a>
+                                    <ul class="dropdown-menu">
+                                        @foreach($menu->children as $menu)
+                                            <li class="nav-item @if(request()->path() == $menu->slug) active @endif">
+                                                <a class="nav-link" href="{{ route('page', $menu->slug) }}">{{ $menu->name }}</a>
+                                            </li>
+                                         @endforeach
+                                    </ul>
                                 </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item submenu dropdown">
-                            <a
-                                href="#"
-                                class="nav-link dropdown-toggle"
-                                data-toggle="dropdown"
-                                role="button"
-                                aria-haspopup="true"
-                                aria-expanded="false"
-                            >Formations</a>
-                            <ul class="dropdown-menu">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('page', 'formation-initiale') }}">Formation Initiale</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('page', 'formation-continue') }}" >Formation Continue</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('page', 'formation-modulaire') }}">Formation modulaire</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item submenu dropdown">
-                            <a
-                                href="#"
-                                class="nav-link dropdown-toggle"
-                                data-toggle="dropdown"
-                                role="button"
-                                aria-haspopup="true"
-                                aria-expanded="false"
-                            >Labs</a>
-                            <ul class="dropdown-menu">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('page', 'rech-innov') }}">Rech & Innov</a>
-                                </li>
+                            @endif
 
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('page', 'cdoc') }}">Cdoc</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('page', 'opportunites') }}">Opportunites</a>
-                        </li>
-                        <!-- <li class="nav-item">
-                            <a class="nav-link" href="{{ route('page', 'contact') }}">Campus</a>
-                        </li>-->
+                        @endforeach
                     </ul>
                 </div>
 

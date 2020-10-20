@@ -5,7 +5,7 @@
     @include('chicorycom::partials.header-page')
 @stop
 
-<!--================Blog Area =================
+<!--================Blog Area ================= -->
 <section class="blog_area single-post-area section_gap">
     <div class="container">
         <div class="row">
@@ -253,11 +253,11 @@
                             <input type="text" class="form-control" placeholder="Search Posts">
                             <span class="input-group-btn">
                                         <button class="btn btn-default" type="button"><i class="ti-search"></i></button>
-                                    </span>
-                        </div><!-- /input-group
+                            </span>
+                        </div><!-- /input-group -->
                         <div class="br"></div>
                     </aside>
-                    <aside class="single_sidebar_widget author_widget">
+                    <!--<aside class="single_sidebar_widget author_widget">
                         <img class="author_img rounded-circle" src="/img/blog/author.png" alt="">
                         <h4>Charlie Barber</h4>
                         <p>Senior blog writer</p>
@@ -271,7 +271,7 @@
                             should have to spend money on boot camp when you can get. Boot camps have itssuppor
                             ters andits detractors.</p>
                         <div class="br"></div>
-                    </aside>
+                    </aside> -->
                     <aside class="single_sidebar_widget popular_post_widget">
                         <h3 class="widget_title">Popular Posts</h3>
                         <div class="media post_item">

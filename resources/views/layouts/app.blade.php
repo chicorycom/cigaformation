@@ -25,7 +25,7 @@
             <!--================ Start Header Menu Area =================-->
             @include('chicorycom::partials.navbar')
             @section('header')
-                @include('chicorycom::components.carousel')
+                <x-chicorycom-slide></x-chicorycom-slide>
             @show
             <main class="py-4">
                 @yield('content')
@@ -58,7 +58,7 @@
              logged_out_greeting=" Salut! Comment pouvons-nous vous aider?">
         </div>
 
-        <script src="{{ mix('js/theme.js') }}"></script>
+        <script src="{{ asset('js/theme.js') }}"></script>
         <script type="text/javascript" src="{{ asset('js/loader.min.js') }}"></script>
         @stack('scripts')
 </body>

@@ -3,8 +3,11 @@
 namespace Chicorycom\Cigaformation;
 
 use Chicorycom\Cigaformation\Http\Middleware\ChicorycomAdminMiddleware;
+use Chicorycom\Cigaformation\Http\Middleware\ChicorycomGuestMiddleware;
+use Chicorycom\Cigaformation\View\Components\ModulaireFormation;
+use Chicorycom\Cigaformation\View\Components\Slide;
+use Chicorycom\Cigaformation\View\Components\TopCourses;
 use Illuminate\Routing\Router;
-use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 
 class CigaformationServiceProvider extends ServiceProvider
@@ -17,16 +20,23 @@ class CigaformationServiceProvider extends ServiceProvider
      */
     public function boot(Router $router)
     {
+        $router->aliasMiddleware('chicorycomguest', ChicorycomGuestMiddleware::class);
         $router->aliasMiddleware('chicorycom', ChicorycomAdminMiddleware::class);
+
         $router->prefix(config('cigaformation.prefix'))
             ->middleware('api')
             ->as('chicorycom.')
             ->namespace('Chicorycom\Cigaformation\Http\Controllers\Admin')
             ->group(__DIR__.'/../routes/admin.php');
-        $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
+         $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
          $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'chicorycom');
          $this->loadViewsFrom(__DIR__.'/../resources/views', 'chicorycom');
          $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
+        $this->loadViewComponentsAs('chicorycom', [
+            Slide::class,
+            TopCourses::class,
+            ModulaireFormation::class
+        ]);
 
 
         // Publishing is only necessary when using the CLI.
@@ -42,6 +52,8 @@ class CigaformationServiceProvider extends ServiceProvider
      */
     public function register()
     {
+
+
         $this->mergeConfigFrom(__DIR__.'/../config/cigaformation.php', 'cigaformation');
 
         // Register the service the package provides.
@@ -50,7 +62,7 @@ class CigaformationServiceProvider extends ServiceProvider
         });
 
         $this->app->singleton('ChicorycomGuard', function () {
-            return config('auth.defaults.guard', 'web');
+            return config('auth.defaults.guard', 'api');
         });
 
        // $this->registerConfigs();
@@ -128,10 +140,9 @@ class CigaformationServiceProvider extends ServiceProvider
             'assets' => [
                 "{$publishablePath}/public" => public_path(''),
             ],
-
-            /*'seeders' => [
-                "{$publishablePath}/database/seeders" => database_path('seeds'),
-            ],*/
+            'seeders' => [
+                "{$publishablePath}/database/seeders" => database_path('seeders'),
+            ],
             'config' => [
                 "{$publishablePath}/config/cigaformation.php" => config_path('cigaformation.php'),
             ],

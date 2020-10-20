@@ -82,13 +82,14 @@ class ChicorycomLogin extends HTMLElement {
        this.alertElement = document.createElement('div');
        this.alertElement.setAttribute('class', 'alert alert-danger');
         const formData = new FormData(this.form);
+       //formData.append('_token', )
          FetchApi.postForm('/administrator/login', formData)
              .then(response => {
                  this.alertElement.setAttribute('class', 'alert alert-success');
                  this.alertElement.textContent = 'Login success.!!!';
                  this.loginContent.prepend(this.alertElement);
-                 if('url' in response){
-                     window.location.href = response.url
+                 if('redirect' in response){
+                     window.location.href = response.redirect
                  }
              }).catch(e => {
                  const message = Object.values(e.errors).join(', ');
