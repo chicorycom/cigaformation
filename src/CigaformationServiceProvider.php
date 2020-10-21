@@ -5,7 +5,6 @@ namespace Chicorycom\Cigaformation;
 
 use Chicorycom\Cigaformation\Http\Middleware\ChicorycomAdminMiddleware;
 use Chicorycom\Cigaformation\Http\Middleware\ChicorycomGuestMiddleware;
-use Chicorycom\Cigaformation\Providers\ChicorycomPublishedProvider;
 use Chicorycom\Cigaformation\View\Components\ModulaireFormation;
 use Chicorycom\Cigaformation\View\Components\Slide;
 use Chicorycom\Cigaformation\View\Components\TopCourses;
