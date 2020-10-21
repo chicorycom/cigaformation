@@ -14,21 +14,21 @@ class FormationController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return Formation[]|\Illuminate\Database\Eloquent\Collection
+     * @return JsonResponse
      */
     public function index()
     {
-        return Formation::all();
+        return new JsonResponse(Formation::all(), 200);
     }
 
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return JsonResponse
      */
     public function type()
     {
-        return Menu::formations();
+        return new JsonResponse(Menu::formations(), 200);
     }
 
     /**

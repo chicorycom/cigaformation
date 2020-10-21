@@ -21,9 +21,7 @@ $config = [
   <script>
     window.config = @json($config);
   </script>
-  <script src="{{ mix('assets/js/app.js') }}"></script>
-  {{-- Load the application scripts
+  {{-- Load the application scripts --}}
   <script>{!! $appjs !!}</script>
-  --}}
 </body>
 </html>

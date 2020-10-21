@@ -14,7 +14,7 @@ class MenuItemTable extends Seeder
     public function run()
     {
         foreach ($this->menus() as $data):
-            $menu =  \App\Models\Menu::create([
+            $menu =  \Chicorycom\Cigaformation\Models\Menu::create([
                 'name' => $data['name'],
                 'type' => 'ADMIN',
                 'slug' =>  $data['slug'],
@@ -38,7 +38,7 @@ class MenuItemTable extends Seeder
         endforeach;
         $i = 1; $j = 1;
         foreach ($this->publicmenu() as $data):
-            $menu =  \App\Models\Menu::create([
+            $menu =  \Chicorycom\Cigaformation\Models\Menu::create([
                 'name' => $data['name'],
                 'type' => 'PUBLIC',
                 'slug' =>  $data['slug'],
@@ -164,7 +164,7 @@ class MenuItemTable extends Seeder
             ],
             [
                 'name'=> 'Formations',
-                'slug'=> 'formations',
+                'slug'=> 'public-formations',
                 'submenu' => [
                     [
                         'name' => 'Formation Initiale',

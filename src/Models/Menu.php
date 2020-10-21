@@ -41,7 +41,7 @@ class Menu extends Model
         return $query->with('children')->whereNull('parent_id')->where('type', static::PUBLIC)->orderBy('order')->get();
     }
     public function scopeFormations($query){
-        return $query->with('children')->where('slug', 'formations')->where('type', static::PUBLIC)->orderBy('order')->first();
+        return $query->with('children')->where('slug', 'public-formations')->where('type', static::PUBLIC)->orderBy('order')->first();
     }
 
 

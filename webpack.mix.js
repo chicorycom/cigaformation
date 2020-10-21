@@ -28,8 +28,7 @@ mix
             '~': path.join(__dirname, './resources/admin/js')
         }
     },
-    })
-;
+});
 
 if (mix.inProduction()) {
     mix

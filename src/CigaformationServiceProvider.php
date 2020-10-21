@@ -2,13 +2,16 @@
 
 namespace Chicorycom\Cigaformation;
 
+
 use Chicorycom\Cigaformation\Http\Middleware\ChicorycomAdminMiddleware;
 use Chicorycom\Cigaformation\Http\Middleware\ChicorycomGuestMiddleware;
 use Chicorycom\Cigaformation\View\Components\ModulaireFormation;
 use Chicorycom\Cigaformation\View\Components\Slide;
 use Chicorycom\Cigaformation\View\Components\TopCourses;
-use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Filesystem\Filesystem;
+use Illuminate\Routing\Router;
+use Illuminate\Support\Arr;
 
 class CigaformationServiceProvider extends ServiceProvider
 {
@@ -28,8 +31,9 @@ class CigaformationServiceProvider extends ServiceProvider
             ->as('chicorycom.')
             ->namespace('Chicorycom\Cigaformation\Http\Controllers\Admin')
             ->group(__DIR__.'/../routes/admin.php');
-         $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
+
          $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'chicorycom');
+        $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
          $this->loadViewsFrom(__DIR__.'/../resources/views', 'chicorycom');
          $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
         $this->loadViewComponentsAs('chicorycom', [
@@ -43,7 +47,85 @@ class CigaformationServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->bootForConsole();
         }
+
+        if (!file_exists(public_path('storage'))) {
+            $this->fixMissingStorageSymlink();
+        }
     }
+
+    /**
+     * Load helpers.
+
+    protected function loadHelpers()
+    {
+        foreach (glob(__DIR__.'/Helpers/*.php') as $filename) {
+            require_once $filename;
+        }
+    }
+     */
+    /**
+     * Register view composers.
+
+    protected function registerViewComposers()
+    {
+        // Register alerts
+        View::composer('chicorycom::*', function ($view) {
+            $view->with('alerts', VoyagerFacade::alerts());
+        });
+    }
+     */
+    /**
+     * Add storage symlink alert.
+     */
+    protected function addStorageSymlinkAlert()
+    {
+        if (app('router')->current() !== null) {
+            $currentRouteAction = app('router')->current()->getAction();
+        } else {
+            $currentRouteAction = null;
+        }
+        $routeName = is_array($currentRouteAction) ? Arr::get($currentRouteAction, 'as') : null;
+
+        if ($routeName != 'ch.dashboard') {
+            return;
+        }
+
+        $storage_disk = (!empty(config('cigaformation.storage.disk'))) ? config('cigaformation.storage.disk') : 'public';
+
+        if (request()->has('fix-missing-storage-symlink')) {
+            if (file_exists(public_path('storage'))) {
+                if (@readlink(public_path('storage')) == public_path('storage')) {
+                    rename(public_path('storage'), 'storage_old');
+                }
+            }
+
+            if (!file_exists(public_path('storage'))) {
+                $this->fixMissingStorageSymlink();
+            }
+        } elseif ($storage_disk == 'public') {
+            if (!file_exists(public_path('storage')) || @readlink(public_path('storage')) == public_path('storage')) {
+               /* $alert = (new Alert('missing-storage-symlink', 'warning'))
+                    ->title(__('voyager::error.symlink_missing_title'))
+                    ->text(__('voyager::error.symlink_missing_text'))
+                    ->button(__('voyager::error.symlink_missing_button'), '?fix-missing-storage-symlink=1');
+                VoyagerFacade::addAlert($alert); */
+            }
+        }
+    }
+
+    protected function fixMissingStorageSymlink()
+    {
+        app('files')->link(storage_path('app/public'), public_path('storage'));
+
+        if (file_exists(public_path('storage'))) {
+
+        } else {
+
+        }
+
+
+    }
+
 
     /**
      * Register any package services.
@@ -53,7 +135,7 @@ class CigaformationServiceProvider extends ServiceProvider
     public function register()
     {
 
-
+        $this->app->register(ChicorycomPublishedProvider::class);
         $this->mergeConfigFrom(__DIR__.'/../config/cigaformation.php', 'cigaformation');
 
         // Register the service the package provides.
@@ -125,6 +207,7 @@ class CigaformationServiceProvider extends ServiceProvider
     private function registerConsoleCommands()
     {
         $this->commands(Commands\InstallCommand::class);
+        $this->commands(Commands\AssetPublished::class);
 
     }
 
@@ -134,7 +217,9 @@ class CigaformationServiceProvider extends ServiceProvider
     private function registerPublishableResources()
     {
         $publishablePath = __DIR__.'/..';
-
+        $file = new Filesystem;
+        $file->cleanDirectory('database/seeders');
+        $file->cleanDirectory('public');
 
         $publishable = [
             'assets' => [

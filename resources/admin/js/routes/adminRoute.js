@@ -1,7 +1,7 @@
 import Layout from '../layouts/container'
 
 function page (path) {
-    return () => import(`../pages${path}.vue`).then(m => m.default || m).catch(() => import(`../errors/404.vue`).then(m => m.default || m))
+    return () => import(`../pages/${path}.vue`).then(m => m.default || m).catch(() => import(`../errors/404.vue`).then(m => m.default || m))
 }
 window.$menus = JSON.parse(document.body.dataset.page);
 

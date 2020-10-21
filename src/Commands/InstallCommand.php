@@ -105,7 +105,8 @@ class InstallCommand extends Command
             $this->warn('Unable to locate "auth.php" in app .  Did you move this file?');
             $this->warn('You will need to update this manually.  Change "driver => token" to "driver => jwt " in your auth config');
         }
-
+        $file = new Filesystem;
+        $file->cleanDirectory('database/migrations');
         $this->info('Migrating the database tables into your application');
         $this->call('migrate:refresh', ['--force' => $this->option('force')]);
 

@@ -13,7 +13,7 @@ class UsersTable extends Seeder
      */
     public function run()
     {
-        \App\Models\User::create([
+        \Chicorycom\Cigaformation\Models\User::create([
             'name' => 'Assane Sarr',
             'Company' => 'Chicorycom',
             'role' => 'isAdmin',
