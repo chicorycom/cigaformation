@@ -52,14 +52,11 @@
 
 <script>
 import Form from 'vform'
-import LoginWithGithub from '~/components/LoginWithGithub'
 
 export default {
   layout: 'basic',
   middleware: 'guest',
-  components: {
-    LoginWithGithub
-  },
+  components: {},
 
   metaInfo () {
     return { title: this.$t('login') }

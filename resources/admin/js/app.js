@@ -16,9 +16,10 @@ const createContaine = () => {
     const elem = document.createElement('div');
     elem.id = 'chicorycomContainer';
     document.body.appendChild(elem);
+    return elem;
 };
 
-createContaine();
+const el = createContaine();
 
 //Vue.prototype.$datas = JSON.parse(document.body.dataset.page);
 new Vue({
@@ -26,7 +27,7 @@ new Vue({
     store,
     router,
     ...App
-}).$mount('#chicorycomContainer');
+}).$mount(el);
 
 
 
