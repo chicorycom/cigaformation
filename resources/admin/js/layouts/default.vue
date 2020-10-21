@@ -19,10 +19,26 @@ import SideBar from '~/components/SideBar'
 export default {
   middleware: 'auth',
   name: 'MainLayout',
+    data: ()=>({
+        loader: null
+    }),
 
   components: {
     Navbar,
     SideBar
-  }
+  },
+  mounted(){
+      this.$router.beforeEach((to, from, next) => {
+         this.loader = this.$loading.show();
+          next()
+      });
+      this.$router.afterEach((to, from, next) => {
+          if(this.loader){
+              this.loader.hide();
+          }
+      })
+
+  },
+
 }
 </script>

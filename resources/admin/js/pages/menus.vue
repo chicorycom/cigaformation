@@ -61,6 +61,7 @@
         </div>
         <modal v-if="showModal" v-on:close="restore(); showModal = false" btn :width="60">
             <div  class="card" slot="container">
+                <loading :active.sync="form.busy"></loading>
                 <span v-on:click="restore(); showModal = false" class="close"> <i class="far fa-times-circle"></i></span>
                 <form  @submit.prevent="store" @keydown="form.onKeydown($event)">
 

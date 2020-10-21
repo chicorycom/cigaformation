@@ -11,6 +11,7 @@ Vue.use(Router);
 
 // The middleware for every page of the application.
 const globalMiddleware = ['locale', 'check-auth'];
+let loader;
 
 // Load middleware modules dynamically.
 const routeMiddleware = resolveMiddleware(
@@ -52,7 +53,6 @@ function createRouter () {
  */
 async function beforeEach (to, from, next) {
     let components = []
-
     try {
         // Get the matched components and resolve them.
         components = await resolveComponents(

@@ -14,21 +14,19 @@ Vue.use(Laue);
 
 const createContaine = () => {
     const elem = document.createElement('div');
-    //elem.id = 'chicorycomContainer';
+    elem.id = 'chicorycomContainer';
     document.body.appendChild(elem);
-    return elem
 };
 
-const el = createContaine();
+createContaine();
 
-console.log('el')
 //Vue.prototype.$datas = JSON.parse(document.body.dataset.page);
 new Vue({
     i18n,
     store,
     router,
     ...App
-}).$mount(el);
+}).$mount('#chicorycomContainer');
 
 
 
