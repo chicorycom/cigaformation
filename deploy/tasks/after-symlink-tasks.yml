@@ -1,0 +1,40 @@
+# - name: App | Key generate
+#   shell: "php artisan key:generate --show > {{ ansistrano_shared_path }}/app_key"
+#   args:
+#     chdir: "{{ ansistrano_release_path.stdout }}"
+#   failed_when: false
+
+# - name: App | Reading App Key
+#   shell: "cat {{ ansistrano_shared_path }}/app_key"
+#   args:
+#     chdir: "{{ ansistrano_shared_path }}"
+#   register: app_key
+
+- name: Change file bootstrap-cache, group and permissions
+  file:
+    path: "{{ ansistrano_shared_path }}/bootstrap/cache"
+    owner: www-data
+    group: www-data
+    mode: '0775'
+
+- name: Change file storage, group and permissions
+  file:
+    path: "{{ ansistrano_shared_path }}/storage"
+    owner: www-data
+    group: www-data
+    mode: '0775'
+
+
+- name: Change file storage framework cache data, group and permissions
+  file:
+    path: "{{ ansistrano_shared_path }}/storage/framework/cache/data"
+    owner: www-data
+    group: www-data
+    mode: '0775'
+
+- name: Change vendor, group and permissions
+  file:
+    path: "{{ ansistrano_shared_path }}/vendor"
+    owner: www-data
+    group: www-data
+    mode: '0775'
