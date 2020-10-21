@@ -6,7 +6,7 @@
  * Time: 12:57
  */
 
-namespace Chicorycom\Cigaformation;
+namespace Chicorycom\Cigaformation\Providers;
 
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\ServiceProvider;
@@ -34,10 +34,7 @@ class ChicorycomPublishedProvider extends ServiceProvider
          */
         private function registerPublishableResources(){
 
-        $publishablePath = __DIR__.'/..';
-        $file = new Filesystem;
-        $file->cleanDirectory('public');
-
+        $publishablePath = __DIR__ . '/cigaformation';
         $publishable = [
             'assets' => [
                 "{$publishablePath}/public" => public_path(''),

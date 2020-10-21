@@ -60,35 +60,18 @@
 <div id="sidebar-mobile">
     <ul class="sidebar-nav d-flex flex-column justify-content-center align-items-center">
         <li class="sidebar-brand"></li>
-        <li class="nav-item @if(Request::path() == '/' or request()->path() == 'home') active @endif">
-            <a class="nav-link" href="{{ route('page', 'home') }}" >Acceil</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('page', 'campus-guediaway') }}">Campus Guediaway</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('page', 'campus-malika') }}" >Campus Malika</a>
-        </li>
-        <li class="nav-item @if(Request::path() == 'about') active @endif">
-            <a class="nav-link " href="{{ route('page', 'about') }}" >A propos</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('page', 'formation-initiale') }}">Formation Initiale</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('page', 'formation-continue') }}" >Formation Continue</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('page', 'formation-modulaire') }}">Formation modulaire</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('page', 'rech-innov') }}">Rech & Innov</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('page', 'cdoc') }}">Cdoc</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('page', 'opportunites') }}">Opportunites</a>
-        </li>
+        @foreach($menus as $menu)
+            @if(count($menu->children) == 0)
+                <li class="nav-item ">
+                    <a class="nav-link" href="{{ route('page', $menu->slug) }}" >{{ $menu->name }}</a>
+                </li>
+            @else
+                @foreach($menu->children as $menu)
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('page', $menu->slug) }}">{{ $menu->name }}</a>
+                    </li>
+                @endforeach
+            @endif
+        @endforeach
     </ul>
 </div>

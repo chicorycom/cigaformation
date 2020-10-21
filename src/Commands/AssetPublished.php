@@ -4,6 +4,7 @@ namespace Chicorycom\Cigaformation\Commands;
 
 use Chicorycom\Cigaformation\ChicorycomPublishedProvider;
 use Illuminate\Console\Command;
+use Illuminate\Filesystem\Filesystem;
 
 class AssetPublished extends Command
 {
@@ -34,6 +35,8 @@ class AssetPublished extends Command
     {
         $public = $this->option('public');
         if($public){
+            $file = new Filesystem;
+            $file->cleanDirectory('public');
             $this->call('vendor:publish', ['--provider' => ChicorycomPublishedProvider::class]);
             $this->info('Attempting to set Chicorycom public folder');
             return 0;
