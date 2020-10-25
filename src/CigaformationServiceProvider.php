@@ -169,10 +169,10 @@ class CigaformationServiceProvider extends ServiceProvider
         $publishable = [
            /* 'assets' => [
                 "{$publishablePath}/public" => public_path(''),
-            ],*/
+            ],
             'seeders' => [
                 "{$publishablePath}/database/seeders" => database_path('seeders'),
-            ],
+            ],*/
             'config' => [
                 "{$publishablePath}/config/cigaformation.php" => config_path('cigaformation.php'),
             ],

@@ -114,7 +114,7 @@ class InstallCommand extends Command
 
 
         $this->info('Migrating the database tables into your application');
-        $this->call('migrate:refresh', ['--force' => $this->option('force')]);
+        $this->call('migrate', ['--force' => $this->option('force')]);
 
 
         $this->info('Attempting to set Chicorycom User model as parent to App\User');
@@ -149,9 +149,9 @@ class InstallCommand extends Command
         }
 
 
-        $this->info('Seeding data into the database');
+        //$this->info('Seeding data into the database');
 
-        $this->call('db:seed', ['--class' => ChicorycomDatabaseSeeder::class]);
+       // $this->call('db:seed', ['--class' => ChicorycomDatabaseSeeder::class]);
 
         $this->info('link public app');
         $this->call('chicorycom:publish', ['--public' => '--public']);
