@@ -301,7 +301,6 @@
             TimePicker
         },
         watch: {
-
             title (val) {
                 this.form.title = val;
                 this.form.slug = this.slugify(val)
@@ -338,7 +337,6 @@
                     this.preview_img = fileReader.result
                 });
                 fileReader.readAsDataURL(files[0]);
-                this.form.preview_img = files[0];
                 this.form.img_view = files[0];
             },
             selectRead(e) {
@@ -405,10 +403,6 @@
 </script>
 
 <style lang="scss">
-    .ck-editor__editable_inline {
-        height: 300px !important;
-        overflow: auto;
-    }
     .preview-thumbnail{
         width: 100%;
         height: 157px;

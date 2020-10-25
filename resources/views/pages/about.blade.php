@@ -26,9 +26,6 @@
                             Nous vous proposons des cours ouverts pour vous former autrement, pour devenir acteur de votre vie. Nous vous aidons à prendre votre envol, mais ça ne s'arrête pas là. Notre volonté est de vous accompagner tout au long de...
 
                         </p>
-                        <a class="primary-btn" href="#">
-                            Apprendre encore plus <i class="ti-arrow-right ml-1"></i>
-                        </a>
                     </div>
                 </div>
             </div>

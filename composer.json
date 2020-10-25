@@ -20,6 +20,7 @@
         "tymon/jwt-auth": "^1.0",
         "intervention/image": "^2.5",
         "laravel/ui": "^3.0",
+        "cyrildewit/eloquent-viewable": "^5.0",
         "htmlmin/htmlmin": "dev-master"
     },
     "require-dev": {

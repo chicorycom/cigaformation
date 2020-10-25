@@ -6,17 +6,21 @@ use Chicorycom\Cigaformation\Models\Menu;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Intervention\Image\Constraint;
 use Intervention\Image\Facades\Image;
+use Chicorycom\Cigaformation\Http\Controllers\ContentTypes\Image as ContentImage;
 
 
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-
+    protected $slug;
     /**
      * @param String $view
      */
@@ -46,25 +50,41 @@ class Controller extends BaseController
      * @return string
      */
     protected function resize($file, int $width = 70, int $height=null, $crop = false) :string {
-        if($height && !$crop){
-            $img = Image::make($file->getRealPath())
-                //->backup()
-                ->resize($width, $height);
-        }elseif($height && $crop){
-            $img = Image::make($file->getRealPath())
-                ->crop($width, $height);
-        }else{
-            $img = Image::make($file->getRealPath())->resize($width, $height, function ($constraint) {
-                $constraint->aspectRatio();
-            });
+        $image = Image::make($file)
+            ->orientate()
+            ->interlace();
+
+        if($crop) $image->crop($width, $height);
+
+            $image = $image->resize(
+                $width,
+                $height,
+                function (Constraint $constraint) use($crop) {
+                   // $constraint->aspectRatio();
+                   // $constraint->upsize();
+                }
+            )->encode($file->getClientOriginalExtension(), 75);
+
+        $this->slug = $this->getSlug(Request());
+        $path = $this->getSlug(request()).DIRECTORY_SEPARATOR.date('FY').DIRECTORY_SEPARATOR;
+        $filename = md5(Str::random(7));
+        // Make sure the filename does not exist, if it does, just regenerate
+        while (Storage::exists($path.$filename.'.'.$file->getClientOriginalExtension())) {
+            $filename = md5(Str::random(7));
+        }
+        $fullPath = $path.$filename.'.'.$file->getClientOriginalExtension();
+        Storage::disk('public')->put($fullPath, (string) $image, 'public');
+        return Storage::url($fullPath);
+    }
+
+    public function getSlug(Request $request)
+    {
+        if (isset($this->slug)) {
+            $slug = $this->slug;
+        } else {
+            $slug = explode('/', $request->path())[1];
         }
 
-        // resize the image to a width of 300 and constrain aspect ratio (auto height)
-        $generate =  md5(Str::random(7));
-        $dir = storage_path('app/public/images');
-        $path ='app/public/images/' . $generate . '.jpg';
-        File::isDirectory($dir) or File::makeDirectory($dir, 0777, true, true);
-        $img->save(storage_path($path));
-        return "/storage/images/$generate.jpg";
+        return $slug;
     }
 }

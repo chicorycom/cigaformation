@@ -76,7 +76,7 @@ class FormationController extends Controller
             'top'=> $request->top == 'true' ? true : false,
         ]);
 
-
+       // (new Image($request, , $row, $options))->handle();
 
         $img_read = $this->resize($request->file('img_read'), 276, 352);
         $thumbnail = $this->resize($request->file('thumbnail'), 251, 157);

@@ -10,48 +10,35 @@
                     <div class="h_blog_img slide carousel-fade " id="actuality" data-ride="carousel">
                         <div class="_actuality"> <i class="ti-rss"></i> ACTUALITÉS</div>
                         <div class="carousel-inner shadow p-3">
-                            <div class="carousel-item active">
-                                <div class="single_event position-relative">
-                                    <div class="event_thumb">
-                                        <img src="/img/event/directeur.jpeg" alt="" style="width: 555px; height: 400px;" />
-                                    </div>
-                                    <div class="event_details">
-                                        <p>
-                                            One make creepeth man for so bearing their firmament won't
-                                            fowl meat over seas great
-                                        </p>
-                                        <a href="#" class="primary-btn rounded-0 mt-3">Mot du Directeur</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <div class="single_event position-relative">
-                                    <div class="event_thumb">
-                                        <img src="/img/event/actu1.png" alt="" style="width: 555px; height: 400px;"/>
-                                    </div>
-                                    <div class="event_details">
-                                        <div class="d-flex mb-4" >
-                                            <div class="date"><span>15</span> Jun</div>
-
-                                            <div class="time-location">
-                                                <p>
-                                                    <span class="ti-time mr-2"></span> 12:00 AM - 12:30 AM
-                                                </p>
-                                                <p>
-                                                    <span class="ti-location-pin mr-2"></span> Hilton Quebec
-                                                </p>
-                                            </div>
+                            @foreach($events as $event)
+                                <div class="carousel-item @if ($loop->first) active @endif">
+                                    <div class="single_event position-relative">
+                                        <div class="event_thumb">
+                                            <img src="{{ $event->img }}" alt="" style="width: 555px; height: 400px;" />
                                         </div>
-                                        <p>
-                                            One make creepeth man for so bearing their firmament won't
-                                            fowl meat over seas great
-                                        </p>
-                                        <a href="#" class="primary-btn rounded-0 mt-3">
-                                            Voir les détails
-                                        </a>
+                                        <div class="event_details">
+
+                                            @if($event->type == 'EVENT')
+
+                                                <div class="d-flex mb-4" >
+                                                    <div class="date"><span>{{ date('d', strtotime($event->inDate))  }} </span> {{ date('M', strtotime($event->inDate))  }}</div>
+
+                                                    <div class="time-location">
+                                                        <p>
+                                                            <span class="ti-time mr-2"></span> {{ $event->start .'-'. $event->end  }}
+                                                        </p>
+                                                        <p>
+                                                            <span class="ti-location-pin mr-2"></span> {{ $event->location }}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            @endif
+                                            {!! Str::words($event->body, 12) !!}
+                                            <a href="{{ route('details', ['view'=> 'event', 'slug'=> $event->slug]) }}" class="primary-btn rounded-0 mt-3"> @if($event->type == 'DIRECTOR') Mot du Directeur @else  Voir les détails @endif</a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -65,7 +52,7 @@
                             <p>
                                 Nous vous proposons des cours ouverts pour vous former autrement, pour devenir acteur de votre vie. Nous vous aidons à prendre votre envol, mais ça ne s'arrête pas là. Notre volonté est de vous accompagner tout au long de...
                             </p>
-                            <a class="primary-btn" href="#">
+                            <a class="primary-btn" href="/about">
                                 Apprendre encore plus <i class="ti-arrow-right ml-1"></i>
                             </a>
                         </div>
@@ -200,7 +187,7 @@
 
 
 
-   @include('chicorycom::components.event')
+   @include('chicorycom::components.event', ['events'=> $events])
 
 @endsection
 @push('scripts')

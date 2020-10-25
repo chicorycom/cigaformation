@@ -22,6 +22,9 @@ return [
     'prefix' => env('PREFIX_DASHBOARD', 'administrator'),
 
 
+    'assets' => env('ASSET_URL', 'ciga'),
+
+
     /*
     |--------------------------------------------------------------------------
     | Controllers config

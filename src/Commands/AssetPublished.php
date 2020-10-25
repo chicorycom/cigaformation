@@ -3,8 +3,10 @@
 namespace Chicorycom\Cigaformation\Commands;
 
 use Chicorycom\Cigaformation\ChicorycomPublishedProvider;
+use CyrildeWit\EloquentViewable\EloquentViewableServiceProvider;
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
+use Symfony\Component\Process\Process;
 
 class AssetPublished extends Command
 {
@@ -35,10 +37,17 @@ class AssetPublished extends Command
     {
         $public = $this->option('public');
         if($public){
-            $file = new Filesystem;
-            $file->cleanDirectory('public');
-            $this->call('vendor:publish', ['--provider' => ChicorycomPublishedProvider::class]);
-            $this->info('Attempting to set Chicorycom public folder');
+            $publishablePath = __DIR__.'/../../public/*';
+            $asset = public_path('/');
+            $message = "Chicorycom public folder is link to {$asset}";
+            $te = exec("ln -s $publishablePath $asset");
+            $this->error($te);
+            if (!file_exists(public_path($asset))) {
+                //symlink($publishablePath, public_path($asset));
+                $message = "Attempting to set Chicorycom public folder to {$asset}" ;
+            }
+            $this->info($message);
+            $this->call('vendor:publish', ['--provider' => EloquentViewableServiceProvider::class, '--tag'=>'migrations']);
             return 0;
         }
         $this->error('Not option ');

@@ -25,7 +25,7 @@ class ChicorycomPublishedProvider extends ServiceProvider
 
 
         if ($this->app->runningInConsole()) {
-            $this->registerPublishableResources();
+           // $this->registerPublishableResources();
         }
 
     }

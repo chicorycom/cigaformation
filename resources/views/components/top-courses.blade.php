@@ -22,9 +22,9 @@
                             <img class="img-fluid" src="{{ url($formation->img_read) }}" alt="" />
                         </div>
                         <div class="course_content">
-                            <a href="{{ route('details', ['view'=> 'course', 'slug'=> $formation->slug]) }}" class="tag mb-4 d-inline-block">Voir les détails</a>
+                            <a href="{{ route('details', ['view'=> 'formation', 'slug'=> $formation->slug]) }}" class="tag mb-4 d-inline-block">Voir les détails</a>
                             <h4 class="mb-3">
-                                <a href="{{ route('details', ['view'=> 'course', 'slug'=> $formation->slug]) }}">{{ $formation->title }}</a>
+                                <a href="{{ route('details', ['view'=> 'formation', 'slug'=> $formation->slug]) }}">{{ $formation->title }}</a>
                             </h4>
                             <p>
                                 {!! Str::words($formation->body, 21) !!}

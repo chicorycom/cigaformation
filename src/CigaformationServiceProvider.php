@@ -5,11 +5,14 @@ namespace Chicorycom\Cigaformation;
 
 use Chicorycom\Cigaformation\Http\Middleware\ChicorycomAdminMiddleware;
 use Chicorycom\Cigaformation\Http\Middleware\ChicorycomGuestMiddleware;
+use Chicorycom\Cigaformation\View\Components\Events;
 use Chicorycom\Cigaformation\View\Components\ModulaireFormation;
 use Chicorycom\Cigaformation\View\Components\Slide;
 use Chicorycom\Cigaformation\View\Components\TopCourses;
+use HTMLMin\HTMLMin\Facades\HTMLMin;
+use Chicorycom\Cigaformation\Facades\Cigaformation as CigaformationFacade;
+use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Filesystem\Filesystem;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Arr;
 
@@ -39,41 +42,15 @@ class CigaformationServiceProvider extends ServiceProvider
         $this->loadViewComponentsAs('chicorycom', [
             Slide::class,
             TopCourses::class,
-            ModulaireFormation::class
+            ModulaireFormation::class,
+            Events::class
         ]);
-
-
-        // Publishing is only necessary when using the CLI.
-        if ($this->app->runningInConsole()) {
-            $this->bootForConsole();
-        }
 
         if (!file_exists(public_path('storage'))) {
             $this->fixMissingStorageSymlink();
         }
     }
 
-    /**
-     * Load helpers.
-
-    protected function loadHelpers()
-    {
-        foreach (glob(__DIR__.'/Helpers/*.php') as $filename) {
-            require_once $filename;
-        }
-    }
-     */
-    /**
-     * Register view composers.
-
-    protected function registerViewComposers()
-    {
-        // Register alerts
-        View::composer('chicorycom::*', function ($view) {
-            $view->with('alerts', VoyagerFacade::alerts());
-        });
-    }
-     */
     /**
      * Add storage symlink alert.
      */
@@ -86,7 +63,7 @@ class CigaformationServiceProvider extends ServiceProvider
         }
         $routeName = is_array($currentRouteAction) ? Arr::get($currentRouteAction, 'as') : null;
 
-        if ($routeName != 'ch.dashboard') {
+        if ($routeName != 'chicorycom.dashboard') {
             return;
         }
 
@@ -136,10 +113,14 @@ class CigaformationServiceProvider extends ServiceProvider
     {
 
         $this->app->register(ChicorycomPublishedProvider::class);
+        $loader = AliasLoader::getInstance();
+        $loader->alias('HTMLMin', HTMLMin::class);
+        $loader->alias('Cigaformation', CigaformationFacade::class);
+
         $this->mergeConfigFrom(__DIR__.'/../config/cigaformation.php', 'cigaformation');
 
         // Register the service the package provides.
-        $this->app->singleton('cigaformation', function ($app) {
+        $this->app->singleton('cigaformation', function () {
             return new Cigaformation;
         });
 
@@ -147,7 +128,6 @@ class CigaformationServiceProvider extends ServiceProvider
             return config('auth.defaults.guard', 'api');
         });
 
-       // $this->registerConfigs();
 
         if ($this->app->runningInConsole()) {
             $this->registerPublishableResources();
@@ -155,7 +135,7 @@ class CigaformationServiceProvider extends ServiceProvider
         }
 
         if (!$this->app->runningInConsole() || config('app.env') == 'testing') {
-           // $this->registerAppCommands();
+            $this->registerAppCommands();
         }
     }
 
@@ -170,45 +150,14 @@ class CigaformationServiceProvider extends ServiceProvider
     }
 
     /**
-     * Console-specific booting.
-     *
-     * @return void
-     */
-    protected function bootForConsole()
-    {
-        // Publishing the configuration file.
-       /* $this->publishes([
-            __DIR__.'/../config/cigaformation.php' => config_path('cigaformation.php'),
-        ], 'cigaformation.config');
-*/
-        // Publishing the views.
-        /*$this->publishes([
-            __DIR__.'/../resources/views' => base_path('resources/views/vendor/chicorycom'),
-        ], 'cigaformation.views');*/
-
-        // Publishing assets.
-        $this->publishes([
-            __DIR__.'/../public' => public_path(),
-        ], 'cigaformation.views');
-
-        // Publishing the translation files.
-        /*$this->publishes([
-            __DIR__.'/../resources/lang' => resource_path('lang/vendor/chicorycom'),
-        ], 'cigaformation.views');
-        */
-
-        // Registering package commands.
-        // $this->commands([]);
-    }
-
-    /**
      * Register the commands accessible from the Console.
      */
     private function registerConsoleCommands()
     {
         $this->commands(Commands\InstallCommand::class);
         $this->commands(Commands\AssetPublished::class);
-
+        $this->commands(Commands\ControllersCommand::class);
+        $this->commands(Commands\AdminCommand::class);
     }
 
     /**
@@ -217,14 +166,10 @@ class CigaformationServiceProvider extends ServiceProvider
     private function registerPublishableResources()
     {
         $publishablePath = __DIR__.'/..';
-        $file = new Filesystem;
-        $file->cleanDirectory('database/seeders');
-        $file->cleanDirectory('public');
-
         $publishable = [
-            'assets' => [
+           /* 'assets' => [
                 "{$publishablePath}/public" => public_path(''),
-            ],
+            ],*/
             'seeders' => [
                 "{$publishablePath}/database/seeders" => database_path('seeders'),
             ],
@@ -239,11 +184,11 @@ class CigaformationServiceProvider extends ServiceProvider
         }
     }
 
-    public function registerConfigs()
+/**
+* Register the commands accessible from the App.
+*/
+    private function registerAppCommands()
     {
-        $this->mergeConfigFrom(
-            dirname(__DIR__).'/../config/cigaformation.php',
-            'cigaformation'
-        );
+        $this->commands(Commands\MakeModelCommand::class);
     }
 }

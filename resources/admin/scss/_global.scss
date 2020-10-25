@@ -111,3 +111,8 @@ a {
     transform:rotate(360deg);
   }
 }
+
+.ck-editor__editable_inline {
+    height: 300px !important;
+    overflow: auto !important;
+}

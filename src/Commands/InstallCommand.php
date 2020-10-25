@@ -12,11 +12,14 @@ namespace Chicorycom\Cigaformation\Commands;
 
 
 use Chicorycom\Cigaformation\CigaformationServiceProvider;
+use CyrildeWit\EloquentViewable\EloquentViewableServiceProvider;
 use Database\Seeders\ChicorycomDatabaseSeeder;
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Process\Process;
+use Tymon\JWTAuth\Providers\LaravelServiceProvider;
+
 //use Chicorycom\Cigaformation\Traits\Seedable;
 
 
@@ -83,9 +86,12 @@ class InstallCommand extends Command
 
         // Publish only relevant resources on install
         $tags = ['assets'];
-
+        $filesystem->cleanDirectory('database/migrations');
+        $filesystem->cleanDirectory('database/seeders');
         $this->call('vendor:publish', ['--provider' => CigaformationServiceProvider::class]);
-        $this->call('vendor:publish', ['--provider' => "Tymon\JWTAuth\Providers\LaravelServiceProvider"]);
+        $this->call('vendor:publish', ['--provider' => LaravelServiceProvider::class]);
+        $this->call('vendor:publish', ['--provider' => EloquentViewableServiceProvider::class, '--tag'=>'migrations']);
+
         $this->call('jwt:secret');
 
         $this->info('Attempting to set Chicorycom Auth driver');
@@ -105,8 +111,8 @@ class InstallCommand extends Command
             $this->warn('Unable to locate "auth.php" in app .  Did you move this file?');
             $this->warn('You will need to update this manually.  Change "driver => token" to "driver => jwt " in your auth config');
         }
-        $file = new Filesystem;
-        $file->cleanDirectory('database/migrations');
+
+
         $this->info('Migrating the database tables into your application');
         $this->call('migrate:refresh', ['--force' => $this->option('force')]);
 
@@ -144,21 +150,17 @@ class InstallCommand extends Command
 
 
         $this->info('Seeding data into the database');
-        //$this->seed(ChicorycomDatabaseSeeder::class);
+
         $this->call('db:seed', ['--class' => ChicorycomDatabaseSeeder::class]);
 
-        //$this->info('Seeding data into the database');
-       // $this->seed('VoyagerDatabaseSeeder');
-
-
-      //$this->call('vendor:publish', ['--provider' => CigaformationServiceProvider::class, '--tag' => ['route']]);
+        $this->info('link public app');
+        $this->call('chicorycom:publish', ['--public' => '--public']);
 
 
         //$this->info('Setting up the hooks');
         //$this->call('hook:setup');
 
-        //$this->info('Adding the storage symlink to your public folder');
-        //$this->call('storage:link');
+
 
         $this->info('Successfully installed Chicorycom! Enjoy');
     }

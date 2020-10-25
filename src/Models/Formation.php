@@ -2,12 +2,14 @@
 
 namespace Chicorycom\Cigaformation\Models;
 
+use CyrildeWit\EloquentViewable\Contracts\Viewable;
+use CyrildeWit\EloquentViewable\InteractsWithViews;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Formation extends Model
+class Formation extends Model implements Viewable
 {
-    use HasFactory;
+    use HasFactory, InteractsWithViews;
 
     protected $guarded = [
         'created_at', 'updated_at','id'

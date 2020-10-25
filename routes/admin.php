@@ -8,6 +8,7 @@
 
 
 use Chicorycom\Cigaformation\Http\Controllers\Admin\AppController;
+use Chicorycom\Cigaformation\Http\Controllers\Admin\EventController;
 use Chicorycom\Cigaformation\Http\Controllers\Admin\FormationController;
 use Chicorycom\Cigaformation\Models\Menu;
 use Illuminate\Support\Facades\File;
@@ -51,18 +52,24 @@ Route::middleware('auth:api')->group(function(){
     Route::get('formation-data/{formation}/edit', [FormationController::class, 'edit']);
     Route::post('formation-data', [FormationController::class, 'store']);
     Route::put('formation-data/{formation}', [FormationController::class, 'update']);
-    Route::post('formation-data/{formation}', [FormationController::class, 'destroy']);
+    Route::delete('formation-data/{formation}', [FormationController::class, 'destroy']);
+
+    Route::get('event-data', [EventController::class, 'index']);
+    Route::get('event-data/{event}/edit', [EventController::class, 'edit']);
+    Route::post('event-store', [EventController::class, 'store']);
+    Route::put('event-update/{event}', [EventController::class, 'update']);
+    Route::delete('event-delete/{event}', [EventController::class, 'destroy']);
 });
 
 
-
-Route::get('', function () {
-    $appjs = File::get(public_path('assets/js/app.js'));
+$base = public_path(  '/assets/js/app.js');
+Route::get('', function () use($base) {
+    $appjs = File::get($base);
     $menus = Menu::admin();
     return view('chicorycom::admin/index', compact('appjs', 'menus'));
 });
-Route::get('{path}', function ($path) {
-    $appjs = File::get(public_path('assets/js/app.js'));
+Route::get('{path}', function ($path) use($base) {
+    $appjs = File::get($base);
     $menus = Menu::admin();
     return view('chicorycom::admin/index', compact('appjs', 'menus'));
 })->where('path', '(.*)');
