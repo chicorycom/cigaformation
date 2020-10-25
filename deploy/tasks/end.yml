@@ -41,7 +41,7 @@
     chdir: "{{ ansistrano_release_path.stdout }}"
 
 - name: Publish cigaformation public folder
-  shell: 'php artisan chicorycom:publish --public'
+  shell: 'php artisan chicorycom:install'
   args:
     chdir: "{{ ansistrano_release_path.stdout }}"
 
