@@ -92,7 +92,7 @@ class InstallCommand extends Command
         $this->call('vendor:publish', ['--provider' => LaravelServiceProvider::class]);
         $this->call('vendor:publish', ['--provider' => EloquentViewableServiceProvider::class, '--tag'=>'migrations']);
 
-        $this->call('jwt:secret', ['--force' => $this->option('force')]);
+       // $this->call('jwt:secret', ['--force' => $this->option('force')]);
 
         $this->info('Attempting to set Chicorycom Auth driver');
         if (file_exists(config_path('auth.php'))) {

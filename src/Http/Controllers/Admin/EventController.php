@@ -41,7 +41,7 @@ class EventController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'type' => 'in:EVENT,INFO,DIRECTOR',
-            'slug' => 'required|unique:event,slug',
+            'slug' => 'required|unique:events,slug',
             'body' => 'required|string',
             'img' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:1024',
         ]);
@@ -59,8 +59,8 @@ class EventController extends Controller
             'thumbnail' => $thumbnail
         ]);
 
-        $formation = Event::create($collection->all());
-        return new JsonResponse($formation , 201);
+        $event = Event::create($collection->all());
+        return new JsonResponse($event , 201);
     }
 
     /**
@@ -94,7 +94,7 @@ class EventController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'type' => 'in:EVENT,INFO,DIRECTOR',
-            'slug' => 'required|unique:event,slug',
+            'slug' => 'required|unique:events,slug',
             'body' => 'required|string',
             //'img' => 'nullable|sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:1024',
         ]);

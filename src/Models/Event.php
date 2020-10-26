@@ -19,7 +19,6 @@ class Event extends Model implements Viewable
         'created_at', 'updated_at','id'
     ];
 
-    //protected $table = 'events';
 
     public function scopeEvents($query){
         return $query->where('status', static::STATUS_ACTIVE)->orderBy('id', 'desc')->get();

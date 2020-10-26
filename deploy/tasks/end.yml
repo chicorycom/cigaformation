@@ -40,10 +40,10 @@
   args:
     chdir: "{{ ansistrano_release_path.stdout }}"
 
-- name: Publish cigaformation public folder
-  shell: 'php artisan chicorycom:install'
-  args:
-    chdir: "{{ ansistrano_release_path.stdout }}"
+#- name: Publish cigaformation public folder
+#  shell: 'php artisan chicorycom:install'
+#  args:
+#    chdir: "{{ ansistrano_release_path.stdout }}"
 
 
 # - name: Start Or Restart queue:work

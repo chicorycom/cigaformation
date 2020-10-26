@@ -21,8 +21,8 @@ window.mobilecheck = function() {
         Navbar
       -------------------------------------------------------------------------------*/
     function mobileNaveBar(){
-        var slideHeight = $(window).height();
-        var $contentBlog = null
+        const slideHeight = $(window).height();
+        let $contentBlog = null
         if(mobilecheck()){
             $('#myCarousel').css('height', '313px');
         }else {
