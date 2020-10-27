@@ -31,7 +31,7 @@ const createContaine = () => {
 
 const el = createContaine();
 
-//Vue.prototype.$datas = JSON.parse(document.body.dataset.page);
+
 new Vue({
     i18n,
     store,

@@ -10,6 +10,7 @@
 use Chicorycom\Cigaformation\Http\Controllers\Admin\AppController;
 use Chicorycom\Cigaformation\Http\Controllers\Admin\EventController;
 use Chicorycom\Cigaformation\Http\Controllers\Admin\FormationController;
+use Chicorycom\Cigaformation\Http\Controllers\Admin\PageController;
 use Chicorycom\Cigaformation\Models\Menu;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
@@ -59,6 +60,12 @@ Route::middleware('auth:api')->group(function(){
     Route::post('event-store', [EventController::class, 'store']);
     Route::put('event-update/{event}', [EventController::class, 'update']);
     Route::delete('event-delete/{event}', [EventController::class, 'destroy']);
+
+    Route::get('page-data', [PageController::class, 'index']);
+    Route::get('page-data/{page}/edit', [PageController::class, 'edit']);
+    Route::post('page-store', [PageController::class, 'store']);
+    Route::put('page-update/{page}', [PageController::class, 'update']);
+    Route::delete('page-delete/{page}', [PageController::class, 'destroy']);
 });
 
 

@@ -12,7 +12,7 @@
         <hr class="sidebar-divider my-0">
 
         <!-- Nav Item - Dashboard -->
-        <template v-for="menu in menus" >
+        <template v-for="menu in $datas" >
             <template v-if="menu.children.length === 0">
                 <li class="nav-item active" >
                     <router-link :to="menu.slug" class="nav-link" >
@@ -72,10 +72,8 @@
                     document.body.classList.add('sidebar-toggled');
                     this.isToggled = true
                 }
-
             }
         }
-
     }
 </script>
 

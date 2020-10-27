@@ -1,6 +1,7 @@
 {
-    "/assets/js/app.js": "/assets/js/app.js?id=a8e25950fb29ad60af79",
-    "/assets/css/main.css": "/assets/css/main.css?id=8d8f9b454da3ba251f1b",
-    "/assets/js/login.js": "/assets/js/login.js?id=153bb6694a1ce0bfc311",
-    "/js/theme.js": "/js/theme.js?id=d25a7d7ca765058f92f3"
+    "/assets/js/app.js": "/assets/js/app.js",
+    "/assets/css/main.css": "/assets/css/main.css",
+    "/css/style.css": "/css/style.css",
+    "/assets/js/login.js": "/assets/js/login.js",
+    "/js/theme.js": "/js/theme.js"
 }

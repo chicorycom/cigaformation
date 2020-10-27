@@ -237,7 +237,6 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="" target="_blank"></a>
                         <footer class="card-footer d-md-flex align-items-center justify-content-between">
                             <v-button :loading="form.busy" type="reset" typeStyle="default" >
                                 <h2 ><i class="fas fa-sync-alt"></i></h2>

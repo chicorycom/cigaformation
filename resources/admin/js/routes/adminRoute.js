@@ -1,9 +1,11 @@
 import Layout from '../layouts/container'
+import Vue from "vue";
 
 function page (path) {
     return () => import(`../pages/${path}.vue`).then(m => m.default || m).catch(() => import(`../errors/404.vue`).then(m => m.default || m))
 }
 window.$menus = JSON.parse(document.body.dataset.page);
+Vue.prototype.$datas = $menus;
 
 const menus = function () {
     const menus = [];

@@ -5,9 +5,9 @@
             <div class="col-lg-5">
                 <div class="main_title">
                     <h2 class="mb-3 text-white">Evènements </h2>
-                    <p>
+                   <!-- <p>
                         Replenish man have thing gathering lights yielding shall you
-                    </p>
+                    </p> -->
                 </div>
             </div>
         </div>

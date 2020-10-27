@@ -16,7 +16,7 @@ mix
     .js('resources/admin/js/login.js', 'public/assets/js')
     .js('resources/public/js/theme.js', 'public/js')
     .sass('resources/admin/scss/main.scss', 'public/assets/css')
-    //.sass('resources/public/scss/style.scss', 'public/css')
+    .sass('resources/public/scss/style.scss', 'public/css')
     //.extract(['vue'])
     //.postCss('resources/public/css/app.css', 'public/css', [])
 

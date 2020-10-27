@@ -11,8 +11,6 @@ namespace Chicorycom\Cigaformation\Http\Controllers\Admin;
 
 use Chicorycom\Cigaformation\Http\Controllers\Controller;
 use Chicorycom\Cigaformation\Models\Event;
-use Chicorycom\Cigaformation\Models\Formation;
-use Chicorycom\Cigaformation\Models\Menu;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
