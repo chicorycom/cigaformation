@@ -173,7 +173,7 @@
                                         />
                                     </div>
                                     <div class="col-lg-12 text-center">
-                                        <button class="primary-btn">Submit</button>
+                                        <button type="button" class="primary-btn">Submit</button>
                                     </div>
                                 </div>
                             </form>
