@@ -40,10 +40,10 @@
   args:
     chdir: "{{ ansistrano_release_path.stdout }}"
 
-#- name: Publish cigaformation public folder
-#  shell: 'php artisan chicorycom:install'
-#  args:
-#    chdir: "{{ ansistrano_release_path.stdout }}"
+- name: Publish cigaformation public folder
+  shell: 'php artisan chicorycom:install'
+  args:
+    chdir: "{{ ansistrano_release_path.stdout }}"
 
 
 # - name: Start Or Restart queue:work
@@ -58,10 +58,10 @@
 #     chdir: "{{ ansistrano_shared_path }}"
 
 
-#- name: Migrate DATABASE APP
-#  shell: 'php artisan migrate --force'
-#  args:
-#    chdir: "{{ ansistrano_release_path.stdout }}"
+- name: Migrate DATABASE APP
+  shell: 'php artisan migrate --force'
+  args:
+    chdir: "{{ ansistrano_release_path.stdout }}"
 
 
 #- name: SEED Menus APP

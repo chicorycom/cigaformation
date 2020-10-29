@@ -121,7 +121,7 @@ class AppController extends Controller
             $endDate = strtotime($request->end);
             if(($endDate - $startDate) > (60 * 60)){
                 $count = Countdown::count();
-                $count->update(['start'=>$request->start, 'end'=>$request->end]);
+                $count->update(['start'=> $request->start, 'end' => $request->end]);
                 return new JsonResponse($count, 201);
             }
            return new JsonResponse(['errors' => ['end' => 'fin d\'inscription doit supérieur au debut' ]], 422);

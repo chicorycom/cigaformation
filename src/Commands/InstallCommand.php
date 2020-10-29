@@ -114,7 +114,7 @@ class InstallCommand extends Command
 
 
         $this->info('Migrating the database tables into your application');
-        $this->call('migrate', ['--force' => $this->option('force')]);
+       // $this->call('migrate', ['--force' => $this->option('force')]);
 
 
         $this->info('Attempting to set Chicorycom User model as parent to App\User');

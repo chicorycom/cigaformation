@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name') }}</title>
-
+    <link rel="shortcut icon" href="/images/logo.png" type="image/x-icon">
 </head>
 <body class="min-vh-100">
 <div class="container min-vh-100">

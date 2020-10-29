@@ -5,7 +5,7 @@
                 Pre-Inscriptions
                 <small class="text-muted" v-if="form.start && status">
                     <countdown :time="time" >
-                        <template slot-scope="props">{{ props.days }} days, {{ props.hours }} hours, {{ props.minutes }} minutes, {{ props.seconds }} seconds.</template>
+                        <template slot-scope="props">{{ props.days }} jours, {{ props.hours }} heures, {{ props.minutes }} minutes, {{ props.seconds }} seconds.</template>
                     </countdown>
                 </small>
             </h4>
