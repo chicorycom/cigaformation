@@ -5,21 +5,6 @@
     # optimize_autoloader: true
 #  failed_when: false
 
-- name: App | Composer Install
-  shell: 'composer install'
-  args:
-    chdir: "{{ ansistrano_release_path.stdout }}"
-
-- name: Install | Application Install
-  shell: 'composer require chicorycom/cigaformation:dev-master'
-  args:
-    chdir: "{{ ansistrano_release_path.stdout }}"
-
-- name: Config Cache APP
-  shell: 'composer dumpautoload'
-  args:
-    chdir: "{{ ansistrano_release_path.stdout }}"
-
 - name: Cache Clear APP
   shell: 'php artisan cache:clear'
   args:
@@ -40,11 +25,6 @@
   args:
     chdir: "{{ ansistrano_release_path.stdout }}"
 
-- name: Publish cigaformation public folder
-  shell: 'php artisan chicorycom:install'
-  args:
-    chdir: "{{ ansistrano_release_path.stdout }}"
-
 
 # - name: Start Or Restart queue:work
 #   shell: 'pm2 start artisan --name laravel-worker --interpreter php -- queue:work --tries=3 --timeout=600'
@@ -56,12 +36,6 @@
 #   shell: 'pm2 restart echo'
 #   args:
 #     chdir: "{{ ansistrano_shared_path }}"
-
-
-- name: Migrate DATABASE APP
-  shell: 'php artisan migrate --force'
-  args:
-    chdir: "{{ ansistrano_release_path.stdout }}"
 
 
 #- name: SEED Menus APP

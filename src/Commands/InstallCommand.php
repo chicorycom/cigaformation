@@ -86,7 +86,7 @@ class InstallCommand extends Command
 
         // Publish only relevant resources on install
         $tags = ['assets'];
-        $filesystem->cleanDirectory('database/migrations');
+
         //$filesystem->cleanDirectory('database/seeders');
         $this->call('vendor:publish', ['--provider' => CigaformationServiceProvider::class]);
         $this->call('vendor:publish', ['--provider' => LaravelServiceProvider::class]);
@@ -114,6 +114,7 @@ class InstallCommand extends Command
 
 
         $this->info('Migrating the database tables into your application');
+        $filesystem->cleanDirectory('database/migrations');
        // $this->call('migrate', ['--force' => $this->option('force')]);
 
 
