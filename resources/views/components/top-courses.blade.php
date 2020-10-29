@@ -26,7 +26,9 @@
                             <h4 class="mb-3">
                                 <a href="{{ route('details', ['view'=> 'formation', 'slug'=> $formation->slug]) }}">{{ $formation->title }}</a>
                             </h4>
-                            {!! Str::words($formation->body, 15) !!}
+                            <p>
+                                {!! Str::words($formation->body, 11) !!}
+                            </p>
                             <div class="course_meta d-flex justify-content-lg-between align-items-lg-center flex-lg-row flex-column mt-4">
                                 <ul class="_meta">
                                     <li class="d-inline-block mr-2">
