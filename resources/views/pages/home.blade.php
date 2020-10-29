@@ -81,6 +81,7 @@
                                     Avec les parcours diplômants de CIGA-FORMATION, vous accédez aux métiers les plus recherchés sur le marché du travail. Votre succès, c'est bien plus qu'un diplôme, c'est un emploi fait pour vous. Cette réussite professionnelle, nous vous la garantissons  tout simplement.
                                 </p>
                             </div>
+                            @if($countdown->status)
                             <div class="countdown countdown-container container">
                                 <div class="clock row">
                                     <div class="clock-item clock-days countdown-time-value col-sm-6 col-md-3">
@@ -136,6 +137,7 @@
                                     </div><!-- /.clock-item -->
                                 </div>
                             </div>
+                            @endif
                         </div>
                     </div>
                     <div class="col-lg-4 offset-lg-1">
@@ -196,11 +198,9 @@
     <script src="{{ asset('js/countdown.min.js') }}"></script>
     <script type="text/javascript">
         (function ($) {
-
             var now = Math.round(new Date().getTime()/1000);
-            var start = new Date('2020 09 12');
-            var end = new Date();
-            end = new Date(end.setDate(end.getDate()+22));
+            var start = new Date('{{ $countdown->start }}');
+            var end = new Date('{{ $countdown->end }}');
             start = Math.round(start.getTime()/1000);
             end = Math.round(end.getTime()/1000);
 

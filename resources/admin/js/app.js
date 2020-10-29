@@ -4,6 +4,7 @@ import router from '~/router';
 import { Laue } from 'laue';
 import App from './components/App'
 import i18n from "./plugins/i18n";
+require('../images/logo.png');
 
 //import io from 'socket.io-client';
 

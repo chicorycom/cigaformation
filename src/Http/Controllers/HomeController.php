@@ -3,6 +3,7 @@
 namespace Chicorycom\Cigaformation\Http\Controllers;
 
 use Chicorycom\Cigaformation\Cigaformation;
+use Chicorycom\Cigaformation\Models\Countdown;
 use Chicorycom\Cigaformation\Models\Event;
 use Chicorycom\Cigaformation\Models\Formation;
 use Chicorycom\Cigaformation\Models\Menu;
@@ -40,10 +41,10 @@ class HomeController extends ChicorycomBaseController
             $default = view()->exists("chicorycom::pages.{$view}") ? $view : 'default';
             $v = Menu::where('slug', $view)->first();
             $view = $v ? $v : $view;
-
+            $countdown = Countdown::count();
 
             $route = route('page', isset($view->name) ? $view->slug : $view ) ;
-            return $this->view($default, compact('view', 'route', 'events'));
+            return $this->view($default, compact('view', 'route', 'events', 'countdown'));
     }
 
 

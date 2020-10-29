@@ -87,10 +87,10 @@ class InstallCommand extends Command
         // Publish only relevant resources on install
         $tags = ['assets'];
         $filesystem->cleanDirectory('database/migrations');
-        $filesystem->cleanDirectory('database/seeders');
+        //$filesystem->cleanDirectory('database/seeders');
         $this->call('vendor:publish', ['--provider' => CigaformationServiceProvider::class]);
         $this->call('vendor:publish', ['--provider' => LaravelServiceProvider::class]);
-        $this->call('vendor:publish', ['--provider' => EloquentViewableServiceProvider::class, '--tag'=>'migrations']);
+        //$this->call('vendor:publish', ['--provider' => EloquentViewableServiceProvider::class, '--tag'=>'migrations']);
 
        // $this->call('jwt:secret', ['--force' => $this->option('force')]);
 

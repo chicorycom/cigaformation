@@ -26,11 +26,7 @@
                             <h4 class="mb-3">
                                 <a href="{{ route('details', ['view'=> 'formation', 'slug'=> $formation->slug]) }}">{{ $formation->title }}</a>
                             </h4>
-                            <p>
-                                {!! Str::words($formation->body, 21) !!}
-                                <!--One make creepeth man bearing their one firmament won't fowl
-                                meat over sea -->
-                            </p>
+                            {!! Str::words($formation->body, 15) !!}
                             <div class="course_meta d-flex justify-content-lg-between align-items-lg-center flex-lg-row flex-column mt-4">
                                 <ul class="_meta">
                                     <li class="d-inline-block mr-2">

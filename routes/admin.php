@@ -66,6 +66,11 @@ Route::middleware('auth:api')->group(function(){
     Route::post('page-store', [PageController::class, 'store']);
     Route::put('page-update/{page}', [PageController::class, 'update']);
     Route::delete('page-delete/{page}', [PageController::class, 'destroy']);
+
+    Route::get('countdown-data/{countdown}', [AppController::class, 'countdown']);
+    //Route::get('page-data/{page}/edit', [PageController::class, 'edit']);
+    Route::post('countdown-store', [AppController::class, 'countdownStore']);
+    Route::post('countdown-status', [AppController::class, 'countdownStatus']);
 });
 
 

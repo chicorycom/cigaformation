@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import objectToFormData from './objectToFormData';
 import Swal from "sweetalert2"
+const dateFormat = require('dateformat');
 
 /**
  *
@@ -57,7 +58,7 @@ const Chicorycom = {
     install(Vue, options) {
         Vue.prototype.gformData = objectToFormData,
         Vue.prototype.slugify = sanitizeTitle,
-        //Vue.prototype.$wal = Swal,
+        Vue.prototype.$dateFormat = dateFormat,
         Vue.prototype.$delete = del
     },
 }

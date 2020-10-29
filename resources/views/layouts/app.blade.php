@@ -10,6 +10,7 @@
     <meta property="og:locale"   content="fr_FR" />
     <meta property="og:url" content="{{ url('/') }}" />
     <meta property="og:image" content="" />
+    <link rel="shortcut icon" href="/images/logo.png" type="image/x-icon">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', 'Laravel') }}</title>
