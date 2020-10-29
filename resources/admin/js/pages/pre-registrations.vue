@@ -127,7 +127,7 @@
         },
         computed: {
             time (){
-                const now = new Date(this.form.start);
+                const now = new Date();
                 const newYear = new Date(this.form.end);
                 return newYear - now
             }

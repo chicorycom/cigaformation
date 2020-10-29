@@ -31,6 +31,6 @@
     chdir: "{{ ansistrano_release_path.stdout }}"
 
 - name: Migrate DATABASE APP
-  shell: 'php artisan migrate --force'
+  shell: 'php artisan migrate --force --path=/vendor/chicorycom/cigaformation/database/migrations'
   args:
     chdir: "{{ ansistrano_release_path.stdout }}"
