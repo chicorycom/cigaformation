@@ -1,18 +1,22 @@
 <!--================Home Banner Area =================-->
-<section class="banner_area">
+<section class="banner_area"
+@if(gettype($view) == 'object')
+    style="background: url({{ $view->page[0]->background }}) no-repeat center center;"
+@endif
+>
     <div class="banner_inner d-flex align-items-center">
-        <div class="overlay"></div>
+        <div class="overlay" ></div>
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-6">
                     <div class="banner_content text-center">
                         <h2 class="wow fadeInDown" data-wow-delay=".25s">
                             @if(isset($data->title))
-                                {{ $data->title }}
-                                @elseif(isset($view->name))
-                                {{ $view->name }}
+                                    {{ $data->title }}
+                                @elseif(gettype($view) == 'object'))
+                                    {{ $view->name }}
                                 @else
-                                {{ $view }}
+                                    {{ $view }}
                             @endif
                         </h2>
                         <div class="page_link wow fadeInLeft" data-wow-delay=".35s">
@@ -20,7 +24,7 @@
                             <a  href="{{ $route }}" >
                                 @if(isset($data->title))
                                     {{ $data->title }}
-                                @elseif(isset($view->name))
+                                @elseif(gettype($view) == 'object')
                                     {{ $view->name }}
                                 @else
                                     {{ $view }}

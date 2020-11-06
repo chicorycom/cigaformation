@@ -1,7 +1,9 @@
 require('./bootstrap');
-
+import './PreRegisterForm';
 const WOW = require('wow.js');
 require('./vendors/jPushMenu');
+
+
 
 
 

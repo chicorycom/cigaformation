@@ -7,6 +7,8 @@ use Chicorycom\Cigaformation\Models\Countdown;
 use Chicorycom\Cigaformation\Models\Event;
 use Chicorycom\Cigaformation\Models\Formation;
 use Chicorycom\Cigaformation\Models\Menu;
+use Chicorycom\Cigaformation\Models\Page;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -32,7 +34,7 @@ class HomeController extends ChicorycomBaseController
     {
             $data = null;
             $events = [];
-            if($view == "/"){
+            if($view == "/" or $view == 'accueil'){
                 $view = 'home';
             }
             if($view == 'home'){
@@ -43,6 +45,7 @@ class HomeController extends ChicorycomBaseController
             $view = $v ? $v : $view;
             $countdown = Countdown::count();
 
+            ///dd(gettype($view));
             $route = route('page', isset($view->name) ? $view->slug : $view ) ;
             return $this->view($default, compact('view', 'route', 'events', 'countdown'));
     }
@@ -64,5 +67,33 @@ class HomeController extends ChicorycomBaseController
         $route = route('page',  $view . '/'. $slug) ;
 
         return $this->view($default, compact('view', 'route', 'data', 'events'));
+    }
+
+
+    /**
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function preRegister(Request $request){
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:9',
+            'email' => 'required|string|email|unique:users|max:255',
+        ]);
+        $response = $request->all();
+        $response['redirect'] = url('/app-students?p=pre-register');
+        //dd($response['redirect']);
+        return new JsonResponse($response, 200);
+    }
+
+    public function students(){
+
+        return view("chicorycom::pages.students.home");
+    }
+
+    public function content($view){
+        $default = view()->exists("chicorycom::pages.students.sections.{$view}") ? "chicorycom::pages.students.sections.$view" : 'chicorycom::pages.students.sections.default';
+        return view($default, compact('view'));
+
     }
 }

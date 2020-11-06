@@ -14,6 +14,10 @@ class Menu extends Model
         'created_at', 'updated_at','id'
     ];
 
+    protected $with = [
+        'page',
+    ];
+
     const ADMIN = 'ADMIN';
     const PUBLIC = 'PUBLIC';
 
@@ -31,6 +35,9 @@ class Menu extends Model
             ->where('top', true);
     }
 
+    public function page(){
+        return $this->belongsToMany(Page::class);
+    }
 
 
     public function scopeAdmin($query){

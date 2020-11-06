@@ -156,7 +156,7 @@
                 this.form.end = this.$dateFormat(new Date(data.end),  "yyyy-m-dd'T'HH:mm");
 
             },
-            async change(){
+           async change(){
                this.status = this.form.status;
                 await this.form.post(`/${config.base}/countdown-status`);
             }

@@ -14,6 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/', [HomeController::class, 'index']);
+Route::get('/app-students', [HomeController::class, 'students']);
+Route::get('/app-students/{view}', [HomeController::class, 'content']);
+Route::post('/pre-register', [HomeController::class, 'preRegister']);
 Route::get('/{view}', [HomeController::class, 'index'])->name('page');
 Route::get('/{view}/{slug}', [HomeController::class, 'detail'])->name('details');
 

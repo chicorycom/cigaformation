@@ -144,39 +144,8 @@
                         <div class="register_form">
                             <h3>Demande Pré-inscription</h3>
                             <p>Il est grand temps d'apprendre</p>
-                            <form
-                                class="form_area"
-                                id="myForm"
-                                action="#"
-                                method="post"
-                            >
-                                <div class="row">
-                                    <div class="col-lg-12 form_group">
-                                        <input
-                                            name="name"
-                                            placeholder="votre nom"
-                                            required=""
-                                            type="text"
-                                        />
-                                        <input
-                                            name="name"
-                                            placeholder="Votre numéro de téléphone"
-                                            required=""
-                                            type="tel"
-                                        />
-                                        <input
-                                            name="email"
-                                            placeholder="Votre adresse email"
-                                            pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$"
-                                            required=""
-                                            type="email"
-                                        />
-                                    </div>
-                                    <div class="col-lg-12 text-center">
-                                        <button type="button" class="primary-btn">Submit</button>
-                                    </div>
-                                </div>
-                            </form>
+                            <pre-register-form></pre-register-form>
+
                         </div>
                     </div>
                 </div>

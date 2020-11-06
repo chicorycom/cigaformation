@@ -1,4 +1,4 @@
-window.token = document.head.querySelector('meta[name="csrf-token"][content]');
+const token = document.head.querySelector('meta[name="csrf-token"][content]');
 export default class FetchApi{
 
     /**
@@ -12,7 +12,7 @@ export default class FetchApi{
     }
 
     static get(url) {
-        return FetchApi.fetchApi(url, 'GET', {});
+        return FetchApi.fetchApi(url, 'GET');
     }
 
 
@@ -23,14 +23,16 @@ export default class FetchApi{
      * @param data:object
      * @returns {Promise<any>}
      */
-    static fetchApi(url, method, data) {
+    static fetchApi(url, method, data={}) {
+        let heade = {
+            method: method,
+            headers: this.header(),
+            credentials: "same-origin",
+        }
+        if(method === 'POST')  heade = {...heade, body: data};
+
         return new Promise((resolve, reject)=> {
-            fetch(url,{
-                method: method,
-                headers: this.header(),
-                credentials: "same-origin",
-                body: data
-            }).then(response => {
+            fetch(url, heade).then(response => {
                 if (!response.ok) { throw response }
                 return response.json().then(res => resolve(res))
             }).catch(err=>{
@@ -39,11 +41,9 @@ export default class FetchApi{
                     err.json().then(errorMessage => {
                         errorMessage.status = status;
                         reject(errorMessage)
-
                     }).catch(err=>{
                         reject(err)
                     });
-
                 } else {
                     reject(err)
                 }
@@ -56,7 +56,7 @@ export default class FetchApi{
             //"Content-Type": "application/json",
             "Accept": "application/json, text-plain, */*",
             "X-Requested-With": "XMLHttpRequest",
-           // "X-CSRF-Token": token ? token.content : ''
+            "X-CSRF-Token": token ? token.content : ''
         });
     }
 }

@@ -15,9 +15,7 @@ class Page extends Model implements Viewable
 
     protected $guarded = [];
 
-    protected $with = [
-        'menus',
-    ];
+
 
     public function menus()
     {
