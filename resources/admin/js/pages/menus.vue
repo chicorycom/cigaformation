@@ -79,7 +79,7 @@
                            <div class="col-md-6">
                                <div class="form-group">
                                    <label for="slug">Slug</label>
-                                   <input id="slug" class="form-control" type="text"  v-model="form.slug" :class="{ 'is-invalid': form.errors.has('slug') }" placeholder="slug" disabled>
+                                   <input id="slug" class="form-control" type="text"  v-model="form.slug" :class="{ 'is-invalid': form.errors.has('slug') }" placeholder="slug">
                                    <has-error :form="form" field="slug" />
                                </div>
                            </div>

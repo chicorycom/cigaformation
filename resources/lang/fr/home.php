@@ -30,5 +30,5 @@ return [
     'formation-initiale'=> 'Formation Initiale',
     'formation-continue'=> 'Formation Continue',
     'formation-modulaire'=> 'Formation modulaire',
-
+    'a-propos'=> 'A propos',
 ];
