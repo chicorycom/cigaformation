@@ -52,11 +52,11 @@
                             </div>
                         </td>
                         <td class="font-weight-semi-bold" v-text="user.company"></td>
-                        <td class="font-weight-semi-bold" v-text="user.roles.display_name"></td>
+                        <td class="font-weight-semi-bold" v-text="user.roles ?  user.roles.display_name : ''"></td>
                         <td class="font-weight-semi-bold" v-text="user.salary"></td>
 
 
-                        <td class="text-center" v-if="user.role === 'isAdmin'">
+                        <td class="text-center">
                             <ul class="list-inline mb-0">
                                 <li class="list-inline-item">
                                     <button type="button" class="btn btn-sm btn-outline-success"   >
@@ -180,7 +180,7 @@
                                                         <i class="fas fa-user-tag"></i>
                                                     </span>
                                                 </div>
-                                                    <select class="custom-select mr-sm-2" v-model="form.role" :class="{ 'is-invalid': form.errors.has('role') }">
+                                                    <select class="custom-select mr-sm-2" id="role" v-model="form.role" :class="{ 'is-invalid': form.errors.has('role') }">
                                                         <option value="">Select Role</option>
                                                         <option v-for="role in roles" :value="role.name" v-text="role.display_name"> </option>
                                                     </select>

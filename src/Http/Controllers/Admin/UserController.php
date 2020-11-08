@@ -55,7 +55,7 @@ class UserController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'sometimes|required|string|email|max:255|unique:users,email,'.$user->id,
-            'role' => 'required|string|max:11',
+            'role' => 'required|string|max:21',
         ]);
         $collection = collect([
             'name' => $request->name,
