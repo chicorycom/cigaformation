@@ -20,7 +20,7 @@
   args:
     chdir: "{{ ansistrano_release_path.stdout }}"
 
-- name: Config Cache APP
+- name: Composer dump autoload
   shell: 'composer dumpautoload'
   args:
     chdir: "{{ ansistrano_release_path.stdout }}"

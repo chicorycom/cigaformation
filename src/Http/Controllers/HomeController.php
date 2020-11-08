@@ -40,12 +40,17 @@ class HomeController extends ChicorycomBaseController
             if($view == 'home'){
                 $events = Event::events();
             }
+            if($view == 'a-propos'){
+                $events = Event::where('type', 'DIRECTOR')->first();
+            }
+
             $default = view()->exists("chicorycom::pages.{$view}") ? $view : 'default';
             $v = Menu::where('slug', $view)->first();
+
             $view = $v ? $v : $view;
             $countdown = Countdown::count();
 
-            ///dd(gettype($view));
+
             $route = route('page', isset($view->name) ? $view->slug : $view ) ;
             return $this->view($default, compact('view', 'route', 'events', 'countdown'));
     }

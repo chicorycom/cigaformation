@@ -20,6 +20,7 @@
         "bootstrap": "^4.0.0",
         "bulma": "^0.9.1",
         "chart.js": "^2.9.3",
+        "country-list": "^2.2.0",
         "cross-env": "^7.0",
         "dateformat": "^3.0.3",
         "jquery": "^3.2",

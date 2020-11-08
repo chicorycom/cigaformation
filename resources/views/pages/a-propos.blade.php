@@ -11,21 +11,14 @@
         <div class="row h_blog_item">
             <div class="col-lg-6">
                 <div class="h_blog_img">
-                    <img class="img-fluid" src="/img/event/directeur.jpeg" alt="" style="height: 400px; width: 555px;" />
+                    <img class="img-fluid" src="{{ $events->img }}" alt="" style="height: 400px; width: 555px;" />
                 </div>
             </div>
             <div class="col-lg-6">
                 <div class="h_blog_text">
                     <div class="h_blog_text_inner left right">
                         <h4>Bienvenue dans Ciga Formation</h4>
-                        <p>
-                            Devenez expert·e sur un métier passionnant et décrochez un emploi. Garanti. Avec les parcours diplômants de CIGA-FORMATION, vous accédez aux métiers les plus recherchés sur le marché du travail. Votre succès, c'est bien plus qu'un diplôme, c'est un emploi fait pour vous. Cette réussite professionnelle, nous vous la garantissons tout simplement.
-
-                        </p>
-                        <p>
-                            Nous vous proposons des cours ouverts pour vous former autrement, pour devenir acteur de votre vie. Nous vous aidons à prendre votre envol, mais ça ne s'arrête pas là. Notre volonté est de vous accompagner tout au long de...
-
-                        </p>
+                        {!! nl2br($events->body)  !!}
                     </div>
                 </div>
             </div>

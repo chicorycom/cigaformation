@@ -20,32 +20,43 @@
 
 </head>
 <body id="welcome">
-<aside class="left-sidebar">
-    <div class="logo">
-        <a href="/"> <img src="/images/logo.png" alt="CIGA-FORMATION" /> </a>
-    </div>
-    <nav class="left-nav">
-        <ul id="nav">
-            <li ><a href="#welcome" data-section="welcome" id="default" >Welcome</a></li>
-            <li><a href="#pre-register" data-section="pre-register">Pré-inscription</a></li>
-            <li><a href="#">Demande de bourse</a></li>
-            <li><a href="#">Structure</a></li>
-            <li><a href="#">Paiement en ligne</a></li>
-            <li><a href="#">Exament en ligne</a></li>
-            <li><a href="#">Coures en ligne</a></li>
-            <li><a href="#">Carnet de note</a></li>
-            <li><a href="#">Emploie du temps</a></li>
-        </ul>
+<div class="wrapper">
+
+    <!-- Sidebar -->
+    <nav id="sidebar">
+        <div class="logo">
+            <a href="/"> <img src="/images/logo.png" alt="CIGA-FORMATION" /> </a>
+        </div>
+        <ul class="list-unstyled components js-nav-data"></ul>
     </nav>
-</aside>
-<div id="main-wrapper">
-    <div class="main-content">
-        <header class="content-header">
-            <h3 class="text-primary text-weight-bold">CENTRE D'INFORMATIQUE ET DE GESTION APPLIQUEE</h3>
-        </header>
-        <main class="content js-content"></main>
+
+    <!-- Page Content -->
+    <div id="content">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid d-flex justify-content-between">
+                <button type="button" id="sidebarCollapse" class="btn btn-default">
+                    <i class="fa fa-align-left"></i>
+                </button>
+                <header class="d-none d-md-block">
+                    <h4 class="text-primary text-weight-bold ">CENTRE D'INFORMATIQUE ET DE GESTION APPLIQUEE</h4>
+                </header>
+                <div class="" id="navbarText">
+                    <a href="/">Déconnecter</a>
+                </div>
+            </div>
+        </nav>
+
+            <div class="container">
+                <main class="content js-content"></main>
+            </div>
+
+        <!-- We'll fill this with dummy content -->
     </div>
+
 </div>
+
+
+
 <script src="/students/js/nav.js"></script>
 </body>
 </html>
