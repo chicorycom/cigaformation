@@ -67,11 +67,12 @@ class PageController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param Page $page
-     * @return Page
+     * @return JsonResponse
      */
     public function edit(Page $page)
     {
-        return $page;
+        $page = $page->with('menus')->findOrFail($page->id);
+        return new JsonResponse($page, 200);
     }
 
     /**

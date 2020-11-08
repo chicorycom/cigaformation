@@ -6,12 +6,13 @@
     @stop
 
 <!--================ Start About Area =================-->
+@if($events)
 <section class="about_area section_gap">
     <div class="container">
         <div class="row h_blog_item">
             <div class="col-lg-6">
                 <div class="h_blog_img">
-                    <img class="img-fluid" src="{{ $events->img }}" alt="" style="height: 400px; width: 555px;" />
+                    <img class="img-fluid" src="{{ url($events->img) }}" alt="" style="height: 400px; width: 555px;" />
                 </div>
             </div>
             <div class="col-lg-6">
@@ -26,7 +27,7 @@
     </div>
 </section>
 <!--================ End About Area =================-->
-
+@endif
 <!--================ Start Feature Area =================-->
 <section class="feature_area section_gap_top title-bg">
     <div class="container">

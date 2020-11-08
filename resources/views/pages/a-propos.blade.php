@@ -34,9 +34,9 @@
             <div class="col-lg-5">
                 <div class="main_title">
                     <h2 class="mb-3 text-white">Fonctionnalité géniale</h2>
-                    <p style="color: white">
+                   <!-- <p style="color: white">
                         Replenish man have thing gathering lights yielding shall you
-                    </p>
+                    </p> -->
                 </div>
             </div>
         </div>
@@ -46,10 +46,10 @@
                     <div class="icon"><span class="flaticon-student"></span></div>
                     <div class="desc">
                         <h4 class="mt-3 mb-2">Facilité de bourses</h4>
-                        <p>
+                        <!-- <p>
                             One make creepeth, man bearing theira firmament won't great
                             heaven
-                        </p>
+                        </p> -->
                     </div>
                 </div>
             </div>
@@ -59,10 +59,10 @@
                     <div class="icon"><span class="flaticon-book"></span></div>
                     <div class="desc">
                         <h4 class="mt-3 mb-2">Vendre un cours en ligne</h4>
-                        <p>
+                        <!--<p>
                             One make creepeth, man bearing theira firmament won't great
                             heaven
-                        </p>
+                        </p>-->
                     </div>
                 </div>
             </div>
@@ -72,10 +72,10 @@
                     <div class="icon"><span class="flaticon-earth"></span></div>
                     <div class="desc">
                         <h4 class="mt-3 mb-2">Certification globale</h4>
-                        <p>
+                        <!--<p>
                             One make creepeth, man bearing theira firmament won't great
                             heaven
-                        </p>
+                        </p> -->
                     </div>
                 </div>
             </div>
