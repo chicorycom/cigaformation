@@ -20,6 +20,9 @@
 
 </head>
 <body id="welcome">
+<div class="overlay">
+    <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+</div>
 <div class="wrapper">
 
     <!-- Sidebar -->
@@ -33,18 +36,33 @@
     <!-- Page Content -->
     <div id="content">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container-fluid d-flex justify-content-between">
+            <div class="container-fluid">
+
                 <button type="button" id="sidebarCollapse" class="btn btn-default">
                     <i class="fa fa-align-left"></i>
                 </button>
                 <header class="d-none d-md-block">
                     <h4 class="text-primary text-weight-bold ">CENTRE D'INFORMATIQUE ET DE GESTION APPLIQUEE</h4>
                 </header>
-                <div class="" id="navbarText">
-                    <a href="/">Déconnecter</a>
-                </div>
+
+
+                <ul class="nav navbar-nav ml-auto">
+                    <!-- <li class="nav-item active">
+                         <a class="nav-link" href="#">Page</a>
+                     </li>
+                     <li class="nav-item">
+                         <a class="nav-link" href="#">Page</a>
+                     </li>
+                     <li class="nav-item">
+                         <a class="nav-link" href="#">Page</a>
+                     </li> -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Déconnecter</a>
+                    </li>
+                </ul>
             </div>
         </nav>
+
 
             <div class="container">
                 <main class="content js-content"></main>

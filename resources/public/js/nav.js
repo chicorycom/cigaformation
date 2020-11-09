@@ -14,7 +14,14 @@ nav_data.forEach(data => {
     li.appendChild(a);
     sideBarNav.appendChild(li);
 });
-
+$(document).on({
+    ajaxStart(){
+        $("body").addClass("loading");
+    },
+    ajaxStop(){
+        $("body").removeClass("loading");
+    }
+});
 // Import and add each page to the DOM
 /*Array.prototype.forEach.call(links, (link) => {
     console.log(link.import);
@@ -112,4 +119,5 @@ if (sectionId) {
     activateDefaultSection();
    // displayAbout()
 }
+
 
