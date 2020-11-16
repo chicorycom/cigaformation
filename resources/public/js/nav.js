@@ -1,19 +1,23 @@
 require('./bootstrap');
+
 import nav_data from './nav_json'
 const countryList = require('country-list');
 window.country = countryList.getData();
 window.nav_data = nav_data;
 const sideBarNav = document.querySelector('.js-nav-data');
-nav_data.forEach(data => {
-   const li = document.createElement('li');
-   const a = document.createElement('a');
-    a.href = `#${data.slug}`
-    a.text = data.name;
-    a.dataset.section = data.slug;
-    a.id = data.slug;
-    li.appendChild(a);
-    sideBarNav.appendChild(li);
-});
+if(sideBarNav){
+    nav_data.forEach(data => {
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.href = `#${data.slug}`
+        a.text = data.name;
+        a.dataset.section = data.slug;
+        a.id = data.slug;
+        li.appendChild(a);
+        sideBarNav.appendChild(li);
+    });
+}
+
 $(document).on({
     ajaxStart(){
         $("body").addClass("loading");
@@ -57,11 +61,11 @@ document.body.addEventListener('click', (event) => {
    document.querySelectorAll('.js-nav-data li a').forEach(element=>{
        element.classList.remove('current')
    });
-   event.target.classList.add('current')
+    event.target.classList.add('current');
     localStorage.setItem('activeSectionButtonId', view);
-   //'current'
 
-  const response = await $.get(`/app-students/${view}`);
+
+     const response = await $.get(`/espace-etudiants/${view}`);
      let template = document.createElement('div');
      template.innerHTML = response;
      const script = template.getElementsByTagName("script")[0];
@@ -119,5 +123,20 @@ if (sectionId) {
     activateDefaultSection();
    // displayAbout()
 }
+
+
+/*$(window).on('hashchange', function() {
+   const url = location.hash;
+    if(url){
+        document.querySelector(url).click();
+    }
+});
+
+window.onhashchange = async function() {
+    console.log('ddd')
+}
+*/
+
+
 
 

@@ -16,6 +16,7 @@ mix
     .js('resources/admin/js/login.js', 'public/assets/js')
     .js('resources/public/js/theme.js', 'public/js')
     .js('resources/public/js/nav.js', 'public/students/js')
+    .js('resources/public/js/auth.js', 'public/students/js')
     .sass('resources/admin/scss/main.scss', 'public/assets/css')
     .sass('resources/public/scss/style.scss', 'public/css')
     .sass('resources/public/student/main.scss', 'public/students/css')

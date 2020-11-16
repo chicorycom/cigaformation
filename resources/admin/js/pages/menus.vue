@@ -79,7 +79,7 @@
                            <div class="col-md-6">
                                <div class="form-group">
                                    <label for="slug">Slug</label>
-                                   <input id="slug" class="form-control" type="text"  v-model="form.slug" :class="{ 'is-invalid': form.errors.has('slug') }" placeholder="slug" disabled>
+                                   <input id="slug" class="form-control" type="text"  v-model="form.slug" :class="{ 'is-invalid': form.errors.has('slug') }" placeholder="slug">
                                    <has-error :form="form" field="slug" />
                                </div>
                            </div>
@@ -88,7 +88,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="icon">Icon</label>
-                                    <input id="icon" class="form-control" type="text"  placeholder="fas fa-xxx">
+                                    <input id="icon" class="form-control" v-model="form.icon" type="text"  placeholder="fas fa-xxx">
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -111,7 +111,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="order">Order</label>
-                                    <input id="order" class="form-control" type="number"  placeholder="Order 1.2.3....">
+                                    <input id="order" class="form-control" type="number" v-model="form.order" placeholder="Order 1.2.3....">
                                 </div>
                             </div>
                         </div>

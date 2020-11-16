@@ -8,7 +8,7 @@
                         <div><i class="ti-email mr-1"></i> <a href="mailto:infociga@gmail.com" style="color: #fff;">infociga@gmail.com</a></div>
                     </div>
                     <div class="login-register ">
-                        <span class="header-login cursor-pointer">Login</span> | <span class="header-register cursor-pointer">Register</span>
+                        <a href="/login" class="header-login cursor-pointer">Login</a> | <a href="/register" class="header-register cursor-pointer">Register</a>
                     </div>
                 </div>
             </div>

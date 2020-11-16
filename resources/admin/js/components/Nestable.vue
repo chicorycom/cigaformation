@@ -4,7 +4,7 @@
             <div class="dd-handle">
                 <div class="pl-3">
                     <span v-text="item.name"></span>
-                    <small class="url" v-text="item.slug"></small>
+                    <small class="url" v-if="item.slug" v-text="item.slug"></small>
                 </div>
                 <div class="item_actions ">
                     <button class="btn btn-sm btn-warning text-right " v-on:click="$emit('edit', item)">

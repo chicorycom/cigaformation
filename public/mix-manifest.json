@@ -1,9 +1,10 @@
 {
-    "/assets/js/app.js": "/assets/js/app.js?id=121034965b8dbfd86b98",
-    "/assets/css/main.css": "/assets/css/main.css?id=fe39d8337c128cae44c3",
-    "/css/style.css": "/css/style.css?id=5fc0239529de2e39f488",
+    "/assets/js/app.js": "/assets/js/app.js?id=5eb6e7b66c6c11f3d247",
+    "/assets/css/main.css": "/assets/css/main.css?id=c36a361bd88fe501c3a7",
+    "/css/style.css": "/css/style.css?id=9c5c659ef1c3fab1b6b3",
     "/students/css/main.css": "/students/css/main.css?id=1cf73e719d7b6dd5c383",
     "/assets/js/login.js": "/assets/js/login.js?id=300049dd13b6bf162f78",
     "/js/theme.js": "/js/theme.js?id=a9aecc5fd60876e7b104",
-    "/students/js/nav.js": "/students/js/nav.js?id=b755c94a15454b872080"
+    "/students/js/auth.js": "/students/js/auth.js?id=a2be47ae5df6ba11b7e2",
+    "/students/js/nav.js": "/students/js/nav.js?id=d2177040c1b451d22106"
 }

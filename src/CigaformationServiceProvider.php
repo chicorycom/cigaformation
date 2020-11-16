@@ -3,6 +3,7 @@
 namespace Chicorycom\Cigaformation;
 
 
+
 use Chicorycom\Cigaformation\Http\Middleware\ChicorycomAdminMiddleware;
 use Chicorycom\Cigaformation\Http\Middleware\ChicorycomGuestMiddleware;
 use Chicorycom\Cigaformation\View\Components\Events;

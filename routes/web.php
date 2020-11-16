@@ -1,5 +1,6 @@
 <?php
 
+use Chicorycom\Cigaformation\Http\Controllers\Auth\LoginController;
 use Chicorycom\Cigaformation\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -13,12 +14,22 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', [HomeController::class, 'index']);
-Route::get('/app-students', [HomeController::class, 'students']);
-Route::get('/app-students/{view}', [HomeController::class, 'content']);
-Route::post('/pre-register', [HomeController::class, 'preRegister']);
-Route::get('/{view}', [HomeController::class, 'index'])->name('page');
-Route::get('/{view}/{slug}', [HomeController::class, 'detail'])->name('details');
+
+
+
+Route::group(['middleware' => ['web']], function () {
+    Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
+    Route::get('register', [LoginController::class, 'showRegisterForm'])->name('register');
+    Route::post('login', [LoginController::class, 'login']);
+    Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+
+    Route::get('/', [HomeController::class, 'index']);
+    Route::get('/espace-etudiants', [HomeController::class, 'students'])->middleware('auth:student');
+    Route::get('/espace-etudiants/{view}', [HomeController::class, 'content'])->middleware('auth:student');;
+    Route::post('/pre-register', [HomeController::class, 'preRegister']);
+    Route::get('/{view}', [HomeController::class, 'index'])->name('page');
+    Route::get('/{view}/{slug}', [HomeController::class, 'detail'])->name('details');
+});
 
 
 

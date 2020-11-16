@@ -8,6 +8,7 @@
 
 
 use Chicorycom\Cigaformation\Http\Controllers\Admin\AppController;
+use Chicorycom\Cigaformation\Http\Controllers\Admin\CategoryController;
 use Chicorycom\Cigaformation\Http\Controllers\Admin\EventController;
 use Chicorycom\Cigaformation\Http\Controllers\Admin\FormationController;
 use Chicorycom\Cigaformation\Http\Controllers\Admin\PageController;
@@ -71,6 +72,12 @@ Route::middleware('auth:api')->group(function(){
     //Route::get('page-data/{page}/edit', [PageController::class, 'edit']);
     Route::post('countdown-store', [AppController::class, 'countdownStore']);
     Route::post('countdown-status', [AppController::class, 'countdownStatus']);
+
+    Route::get('category-data', [CategoryController::class, 'index']);
+    Route::get('category-data/{category}/edit', [CategoryController::class, 'edit']);
+    Route::post('category-data', [CategoryController::class, 'store']);
+    Route::put('category-data/{category}', [CategoryController::class, 'update']);
+    Route::delete('category-delete/{category}', [CategoryController::class, 'destroy']);
 });
 
 

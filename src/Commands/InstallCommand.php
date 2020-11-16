@@ -98,14 +98,14 @@ class InstallCommand extends Command
         if (file_exists(config_path('auth.php'))) {
             $userPath =  config_path('auth.php');
 
-            $str = file_get_contents($userPath);
+            $str = file_get_contents(__DIR__.'/../../config/auth.php');
 
             if ($str !== false) {
-                $str = str_replace("'guard' => 'web'", "'guard' => 'api'", $str);
+                //$str = str_replace("'guard' => 'web'", "'guard' => 'api'", $str);
                 file_put_contents($userPath, $str);
 
-                $str = str_replace("'driver' => 'token'", "'driver' => 'jwt'", $str);
-                file_put_contents($userPath, $str);
+                //$str = str_replace("'driver' => 'token'", "'driver' => 'jwt'", $str);
+                //file_put_contents($userPath, $str);
             }
         } else {
             $this->warn('Unable to locate "auth.php" in app .  Did you move this file?');

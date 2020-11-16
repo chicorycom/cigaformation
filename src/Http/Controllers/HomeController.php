@@ -86,7 +86,7 @@ class HomeController extends ChicorycomBaseController
             'email' => 'required|string|email|unique:users|max:255',
         ]);
         $response = $request->all();
-        $response['redirect'] = url('/app-students?p=pre-register');
+        $response['redirect'] = url('/espace-etudiants?p=pre-register');
         //dd($response['redirect']);
         return new JsonResponse($response, 200);
     }

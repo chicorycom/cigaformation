@@ -16,17 +16,17 @@
                                     <div class="form-row">
                                         <div class="col-md-6 ">
                                             <div class="form-group">
-                                        <label class="form-check-label" for="invalidCheck">
-                                            Avez-vous déjà fréquenté CIGA-FORMATION ?
-                                        </label>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="cigaFrequence" id="exampleRadios1" value="true" required>
-                                            <label class="form-check-label" for="exampleRadios1">
-                                                OUI
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="cigaFrequence" id="exampleRadios2" value="false" required>
+                                                <label class="form-check-label" for="invalidCheck">
+                                                    Avez-vous déjà fréquenté CIGA-FORMATION ?
+                                                </label>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="ciga_frequency" id="exampleRadios1" value="OUI" required>
+                                                    <label class="form-check-label" for="exampleRadios1">
+                                                        OUI
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="ciga_frequency" id="exampleRadios2" value="NON" required>
                                             <label class="form-check-label" for="exampleRadios2">
                                                 NON
                                             </label>
@@ -34,8 +34,7 @@
                                                 Vous devez preciser si vous avez dejas frequanté notre etablissement
                                             </div>
                                         </div>
-
-                                    </div>
+                                            </div>
                                         </div>
                                         <div class="col-md-6 student" style="display: none">
                                             <div class="form-group">
@@ -50,11 +49,11 @@
                                                <div class="form-row">
                                                    <div class="col-md-7 mb-3">
                                                        <label for="school-name">Nom de l'école</label>
-                                                       <input type="text" name="school-name" class="form-control" id="school-name" >
+                                                       <input type="text" name="school_name" class="form-control" id="school-name" >
                                                    </div>
                                                    <div class="col-md-5 mb-3">
                                                        <label for="school-address">Localité de l'école</label>
-                                                       <input type="text" name="school-address" class="form-control" id="school-address" >
+                                                       <input type="text" name="school_address" class="form-control" id="school-address" >
                                                    </div>
                                                </div>
                                             </div>
@@ -65,26 +64,26 @@
                                             <div class="form-group">
                                                 <label for="validationCustom01">A quel Institut ? </label>
                                                 <div class="form-check ">
-                                                    <input class="form-check-input" type="radio" name="which_Institute" id="which_Guediaway" value="Guediaway">
-                                                    <label class="form-check-label" for="which_Guediaway">CIGA-FORMATION Guediaway</label>
+                                                    <input class="form-check-input" type="radio" name="which_institute" id="which_Guediaway" value="Guediawaye">
+                                                    <label class="form-check-label" for="which_Guediaway">Campus Guediawaye</label>
                                                 </div>
                                                 <div class="form-check ">
-                                                    <input class="form-check-input" type="radio" name="which_Institute" id="which_Malika" value="Malika">
-                                                    <label class="form-check-label" for="which_Malika">CIGA-FORMATION Malika</label>
+                                                    <input class="form-check-input" type="radio" name="which_institute" id="which_Malika" value="Malika">
+                                                    <label class="form-check-label" for="which_Malika">Campus Malika</label>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-md-6 ">
                                            <div class="form-group">
                                                <label for="registration_number">Votre numéro de matricule </label>
-                                               <input type="text" class="form-control" name="registration_number" id="registration_number">
+                                               <input type="text" class="form-control" name="code" id="registration_number">
                                            </div>
                                         </div>
                                     </div>
                                     <div class="form-row noStudent" style="display: none">
                                         <div class="col-md-2 mb-3">
-                                            <label for="date_entered">Date entrée</label>
-                                            <input type="date" class="form-control" name="date_entered" id="date_entered"  required>
+                                            <label for="entry_date">Date entrée</label>
+                                            <input type="date" class="form-control" name="entry_date" id="entry_date"  required>
                                         </div>
                                         <div class="col-md-2 mb-3">
                                             <label for="release_date">Date sortie</label>
@@ -113,8 +112,8 @@
                                                 <div class="form-group">
                                                     <label for="validationCustom01">Campus choisi </label>
                                                     <div class="form-check ">
-                                                        <input class="form-check-input" type="radio" name="campus" id="campus_guediaway" value="Guediaway" required>
-                                                        <label class="form-check-label" for="campus_guediaway">Guediaway</label>
+                                                        <input class="form-check-input" type="radio" name="campus" id="campus_guediaway" value="Guediawaye" required>
+                                                        <label class="form-check-label" for="campus_guediaway">Guediawaye</label>
                                                     </div>
                                                     <div class="form-check ">
                                                         <input class="form-check-input" type="radio" name="campus" id="campus_malika" value="Malika" required>
@@ -317,11 +316,11 @@
                                                         <label for="nationality">Genre </label>
                                                        <div>
                                                            <div class="custom-control custom-radio custom-control-inline">
-                                                               <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input" required>
+                                                               <input type="radio" id="customRadioInline1" name="customRadioInline1" value="Masculin" class="custom-control-input" required>
                                                                <label class="custom-control-label" for="customRadioInline1">Masculin</label>
                                                            </div>
                                                            <div class="custom-control custom-radio custom-control-inline">
-                                                               <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input" required>
+                                                               <input type="radio" id="customRadioInline2" name="customRadioInline1" value="Féminin" class="custom-control-input" required>
                                                                <label class="custom-control-label" for="customRadioInline2">Féminin</label>
                                                            </div>
                                                        </div>
@@ -369,7 +368,7 @@
                                     </div>
                                 </div>
                             <div class="card-footer d-flex justify-content-between">
-                                <button class="btn btn-default" type="button"><h4><i class="fa fa-reset"></i></h4> Annulé</button>
+                                <button class="btn btn-default" type="reset"><h4><i class="fa fa-refresh"></i></h4> Annulé</button>
                                 <button class="btn btn-primary" type="submit"><h4><i class="fa fa-save"></i></h4> Enregistré</button>
                             </div>
                         </div>
@@ -387,9 +386,9 @@
             var forms = document.getElementsByClassName('needs-validation');
             // Loop over them and prevent submission
             var validation = Array.prototype.filter.call(forms, function(form) {
-                form.cigaFrequence.forEach(el => {
+                form.ciga_frequency.forEach(el => {
                     el.addEventListener('change', function(){
-                        if(this.value === 'true'){
+                        if(this.value === 'OUI'){
                             document.querySelectorAll('.student').forEach(el=>{
                                 el.style.display = 'flex'
                             });

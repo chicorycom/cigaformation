@@ -106,7 +106,11 @@ class PageController extends Controller
 
         $page->update($collection->all());
 
-        return new JsonResponse($page , 201);
+        if(!empty($request->menus)){
+            $page->menus()->sync($request->menus);
+        }
+
+        return new JsonResponse($page, 201);
     }
 
     /**

@@ -1,11 +1,11 @@
 <!--================Home Banner Area =================-->
 <section class="banner_area"
 @if(gettype($view) == 'object')
-    style="background: url({{ $view->page[0]->background }}) no-repeat center center;"
+    style="background: url({{ count($view->page) > 0 ? $view->page[0]->background : '/images/banner.jpg' }}) no-repeat center center;"
 @endif
 >
     <div class="banner_inner d-flex align-items-center">
-        <div class="overlay" ></div>
+        <div class="overlay"></div>
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-6">
@@ -13,7 +13,7 @@
                         <h2 class="wow fadeInDown" data-wow-delay=".25s">
                             @if(isset($data->title))
                                     {{ $data->title }}
-                                @elseif(gettype($view) == 'object'))
+                                @elseif(gettype($view) == 'object')
                                     {{ $view->name }}
                                 @else
                                     {{ $view }}
