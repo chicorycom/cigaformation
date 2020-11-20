@@ -23,7 +23,7 @@ body {
 }
 .auth-layout {
 @import "../fonts/material-icon/css/material-design-iconic-font.min.css";
-
+    height: 100vh;
 .display-flex, .display-flex, .display-flex-center, .signup-content, .signin-content, .social-login, .socials {
   display: flex;
   display: -webkit-flex;
@@ -213,7 +213,9 @@ h2 {
 
 .main {
   background: #f8f8f8;
-  padding: 150px 0; }
+  padding: 150px 0;
+  height: 100vh;
+}
 
 .clear {
   clear: both; }
@@ -273,10 +275,10 @@ body {
   -moz-transform: translate(-50%, -50%);
   -webkit-transform: translate(-50%, -50%);
   -o-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%); }
+  -ms-transform: translate(-50%, -50%);
+}
 
-.signup {
-  margin-bottom: 150px; }
+
 
 .signup-content {
   padding: 75px 0; }

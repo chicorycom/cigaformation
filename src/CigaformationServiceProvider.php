@@ -177,6 +177,9 @@ class CigaformationServiceProvider extends ServiceProvider
             'config' => [
                 "{$publishablePath}/config/cigaformation.php" => config_path('cigaformation.php'),
             ],
+            'htmlmin' => [
+                "{$publishablePath}/config/htmlmin.php" => config_path('htmlmin.php'),
+            ]
 
         ];
 

@@ -56,11 +56,6 @@ class LoginController extends Controller
         return view('chicorycom::auth.login');
     }
 
-    public function showRegisterForm(){
-
-        return view('chicorycom::auth.register');
-    }
-
 
     /**
      * Handle a login request to the application.
@@ -96,6 +91,22 @@ class LoginController extends Controller
         $this->incrementLoginAttempts($request);
 
         return $this->sendFailedLoginResponse($request);
+    }
+
+    /**
+     * Get the needed authorization credentials from the request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return array
+     */
+    protected function credentials(Request $request)
+    {
+
+        if(is_numeric($request->get('email'))){
+            return ['phone'=>$request->get('email'),'password'=> $request->get('password')];
+        }
+
+        return $request->only($this->username(), 'password');
     }
 
     /**
@@ -141,7 +152,5 @@ class LoginController extends Controller
             ? new JsonResponse([], 200)
             : redirect()->intended($this->redirectPath());
     }
-
-
 
 }

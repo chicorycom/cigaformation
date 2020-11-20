@@ -24,6 +24,9 @@ class Student extends Authenticatable
     protected $guarded = [
         'created_at', 'updated_at'
     ];
+
+    protected $appends = ['name'];
+
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -37,5 +40,10 @@ class Student extends Authenticatable
     public function preregister()
     {
         return $this->hasMany(Preregister::class);
+    }
+
+    public function getNameAttribute()
+    {
+        return $this->first_name . ' ' .$this->last_name;
     }
 }

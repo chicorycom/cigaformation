@@ -1,6 +1,7 @@
 <?php
 
 use Chicorycom\Cigaformation\Http\Controllers\Auth\LoginController;
+use Chicorycom\Cigaformation\Http\Controllers\Auth\RegisterController;
 use Chicorycom\Cigaformation\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,7 +20,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => ['web']], function () {
     Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
-    Route::get('register', [LoginController::class, 'showRegisterForm'])->name('register');
+    Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+    Route::post('register', [RegisterController::class, 'register'])->name('store.register');
     Route::post('login', [LoginController::class, 'login']);
     Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
