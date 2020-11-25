@@ -134,6 +134,23 @@ class InstallCommand extends Command
             $this->warn('You will need to update this manually.  Change "extends Authenticatable" to "extends \Chicorycom\Cigaformation\Models\User" in your User model');
         }
 
+
+        $this->info('Attempting to set Chicorycom jwt config file');
+        if (file_exists(config_path('jwt.php'))) {
+            $jwtPath =  config_path('jwt.php');
+
+            $str = file_get_contents($jwtPath);
+
+            if ($str !== false) {
+                $str = str_replace("Lcobucci::class", "Namshi::class", $str);
+
+                file_put_contents($jwtPath, $str);
+            }
+        } else {
+            $this->warn('Unable to locate "jwt.php" .  Did you move this file?');
+            $this->warn('You will need to update this manually.  Change "Lcobucci::class" to "Namshi::class" in your jwt file config');
+        }
+
         $this->info('Dumping the autoloaded files and reloading all new files');
 
         $composer = $this->findComposer();
