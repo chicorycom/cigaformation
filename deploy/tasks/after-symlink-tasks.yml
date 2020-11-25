@@ -15,6 +15,11 @@
   args:
     chdir: "{{ ansistrano_release_path.stdout }}"
 
+- name: Install | Doctrine dbal
+  shell: 'composer require doctrine/dbal'
+  args:
+    chdir: "{{ ansistrano_release_path.stdout }}"
+
 - name: Install | Application Install
   shell: 'composer require chicorycom/cigaformation:dev-master'
   args:
@@ -30,7 +35,7 @@
   args:
     chdir: "{{ ansistrano_release_path.stdout }}"
 
-- name: Migrate DATABASE APP
-  shell: 'php artisan migrate --force --path=/vendor/chicorycom/cigaformation/database/migrations'
-  args:
-    chdir: "{{ ansistrano_release_path.stdout }}"
+#- name: Migrate DATABASE APP
+#  shell: 'php artisan migrate --force --path=/vendor/chicorycom/cigaformation/database/migrations'
+#  args:
+#    chdir: "{{ ansistrano_release_path.stdout }}"
